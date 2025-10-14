@@ -1,0 +1,5430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erlebnis-Helden - Unvergessliche Abenteuer erleben</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+    }
+    
+    .nav-links a:hover {
+        opacity: 0.8;
+    }
+    
+    .login-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+    }
+    
+    .btn-primary {
+        background-color: #ff6b6b;
+        color: white;
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    /* Page Visibility Control */
+    .page {
+        display: none;
+    }
+    
+    .page.active {
+        display: block;
+    }
+    
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://outdoor-welten.de/files/att_pictures/magazines_articles/00587/web-02_ballonfahrt-ber--_dietmar-denger.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    
+    .hero-cta {
+        animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    
+    /* Hero Section with different backgrounds for logged-in users */
+    .hero.linda-logged-in {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/AdobeStock_365899176.jpeg?Web=1');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .hero.business-logged-in {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Business%20Hero.png?Web=1');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .btn-large {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+    }
+    
+    /* Search Section */
+    .search-section {
+        background: white;
+        padding: 2rem 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 3rem;
+    }
+    
+    .search-form {
+        display: flex;
+        gap: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .search-input {
+        flex: 1;
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    
+    .search-btn {
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    
+    /* Categories */
+    .categories {
+        margin: 3rem 0;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #333;
+    }
+    
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .category-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .category-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .category-image.balloon {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://outdoor-welten.de/files/att_pictures/magazines_articles/00587/web-02_ballonfahrt-ber--_dietmar-denger.jpg');
+    }
+    
+    .category-image.motorsport {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/future%20car.png?Web=1');
+    }
+    
+    .category-image.wellness {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/munich%20lunch.png?Web=1');
+    }
+    
+    .category-image.outdoor {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/surfen.png?Web=1');
+    }
+    
+    .category-content {
+        padding: 1.5rem;
+    }
+    
+    .category-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    
+    .category-content p {
+        color: #666;
+        margin-bottom: 1rem;
+    }
+    
+    .price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ff6b6b;
+    }
+    
+    /* Products Section */
+    .products {
+        margin: 3rem 0;
+    }
+    
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .product-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .product-image {
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .product-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(255, 107, 107, 0.6));
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .product-card:hover .product-image::before {
+        opacity: 1;
+    }
+    
+    .product-image.sunrise {
+        background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    .product-image.dj-balloon {
+        background-image: url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Party%202%20on%20the%20balloon.png?Web=1');
+    }
+    
+    .product-image.alpine {
+        background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    .product-content {
+        padding: 1.5rem;
+    }
+    
+    .product-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    
+    .product-description {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .product-features {
+        list-style: none;
+        margin-bottom: 1rem;
+    }
+    
+    .product-features li {
+        padding: 0.2rem 0;
+        color: #555;
+    }
+    
+    .product-features li:before {
+        content: "✓ ";
+        color: #4caf50;
+        font-weight: bold;
+    }
+    
+    .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+    }
+    
+    .product-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff6b6b;
+    }
+    
+    /* Product Detail Page Styles */
+    .breadcrumb {
+        padding: 1rem 0;
+        background: white;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #666;
+    }
+    
+    .breadcrumb-nav a {
+        color: #667eea;
+        text-decoration: none;
+    }
+    
+    .breadcrumb-nav a:hover {
+        text-decoration: underline;
+    }
+    
+    .product-detail {
+        background: white;
+        margin: 2rem 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .product-detail-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 3rem;
+    }
+    
+    .product-gallery {
+        position: relative;
+    }
+    
+    .main-image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+    
+    .main-image.sunrise-detail {
+        background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    .main-image.dj-balloon-detail {
+        background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    .main-image.alpine-detail {
+        background-image: url('https://images.unsplash.com/photo-1546026423-cc4642628d2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    .thumbnail-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .thumbnail {
+        height: 80px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+    
+    .thumbnail:hover {
+        transform: scale(1.05);
+    }
+    
+    .thumbnail.thumb1 {
+        background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80');
+    }
+    
+    .thumbnail.thumb2 {
+        background-image: url('https://outdoor-welten.de/files/att_pictures/magazines_articles/00587/web-02_ballonfahrt-ber--_dietmar-denger.jpg');
+    }
+    
+    .thumbnail.thumb3 {
+        background-image: url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Party%20on%20the%20balloon.png?Web=1');
+    }
+    
+    .thumbnail.thumb4 {
+        background-image: url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Hot%20Air%20Balloon%20Rides%20for%20Two%20in%20Chicago%20_%202%20Person%20Balloon%20Ride.png?Web=1');
+    }
+    
+    .product-info h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stars {
+        color: #ffd700;
+    }
+    
+    .rating-text {
+        color: #666;
+    }
+    
+    .product-price-large {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ff6b6b;
+        margin-bottom: 1rem;
+    }
+    
+    .price-per-person {
+        color: #666;
+        margin-bottom: 2rem;
+    }
+    
+    .product-highlights {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+    
+    .product-highlights h3 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .highlight-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .highlight-item i {
+        color: #4caf50;
+        font-size: 1.2rem;
+    }
+    
+    .booking-section {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+    
+    .booking-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .quantity-btn {
+        background: #667eea;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    
+    .quantity-display {
+        font-size: 1.5rem;
+        font-weight: bold;
+        min-width: 50px;
+        text-align: center;
+    }
+    
+    .total-price {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ff6b6b;
+        text-align: center;
+        margin: 1rem 0;
+    }
+    
+    .book-now-btn {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.3rem;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .book-now-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+    }
+    
+    .product-tabs {
+        margin-top: 3rem;
+    }
+    
+    .tab-buttons {
+        display: flex;
+        border-bottom: 2px solid #e0e0e0;
+        margin-bottom: 2rem;
+    }
+    
+    .tab-btn {
+        background: none;
+        border: none;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: #666;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s;
+    }
+    
+    .tab-btn.active {
+        color: #667eea;
+        border-bottom-color: #667eea;
+    }
+    
+    .tab-content {
+        display: none;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .experience-timeline {
+        position: relative;
+        padding-left: 2rem;
+    }
+    
+    .experience-timeline:before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #667eea;
+    }
+    
+    .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+    }
+    
+    .timeline-item:before {
+        content: '';
+        position: absolute;
+        left: -5px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #667eea;
+    }
+    
+    .timeline-time {
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 0.5rem;
+    }
+    
+    .reviews-section {
+        margin-top: 3rem;
+    }
+    
+    .review-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+    }
+    
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .reviewer-name {
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .review-date {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .review-summary {
+    background: linear-gradient(135deg, #f8f9ff, #fff);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e0e0e0;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.summary-column h5 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.summary-column.positive h5 {
+    color: #4caf50;
+}
+
+.summary-column.negative h5 {
+    color: #ff6b6b;
+}
+
+.summary-points {
+    list-style: none;
+    padding: 0;
+}
+
+.summary-points li {
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.positive .summary-points li:before {
+    content: "👍 ";
+    margin-right: 0.5rem;
+}
+
+.negative .summary-points li:before {
+    content: "👎 ";
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+    
+    .back-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 2rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s;
+    }
+    
+    .back-btn:hover {
+        background: #5a6268;
+        transform: translateY(-2px);
+    }
+    
+    /* Chatbot Message Formatting */
+    .message-content {
+        white-space: pre-line;
+    }
+    
+    .message-content strong {
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .message.bot .message-content strong {
+        color: #667eea;
+    }
+    
+    .message-content .highlight {
+        background: rgba(102, 126, 234, 0.1);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    
+    .message-content .emoji {
+        font-size: 1.2em;
+    }
+    
+    /* User Profile in Header */
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+    }
+    
+    .profile-avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 3px solid rgba(255,255,255,0.3);
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .profile-avatar:hover {
+        border-color: rgba(255,255,255,0.8);
+        transform: scale(1.05);
+    }
+    
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .profile-name {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    
+    .profile-type {
+        font-size: 0.8rem;
+        opacity: 0.8;
+    }
+    
+    .profile-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        padding: 1rem;
+        min-width: 200px;
+        display: none;
+        z-index: 1000;
+        margin-top: 10px;
+    }
+    
+    .profile-dropdown.show {
+        display: block;
+        animation: fadeInDown 0.3s ease-out;
+    }
+    
+    .profile-dropdown a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+        transition: color 0.3s;
+    }
+    
+    .profile-dropdown a:hover {
+        color: #667eea;
+    }
+    
+    .profile-dropdown a:last-child {
+        border-bottom: none;
+        color: #ff6b6b;
+    }
+    
+    /* Registration Type Selection */
+    .registration-type {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .type-option {
+        flex: 1;
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        background: #f8f9fa;
+    }
+    
+    .type-option:hover {
+        border-color: #667eea;
+        background: rgba(102, 126, 234, 0.1);
+    }
+    
+    .type-option.active {
+        border-color: #667eea;
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+    }
+    
+    .type-option i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    
+    .type-option h4 {
+        margin-bottom: 0.5rem;
+    }
+    
+    .type-option p {
+        font-size: 0.9rem;
+        color: #666;
+    }
+    
+    .company-fields {
+        display: none;
+    }
+    
+    .company-fields.show {
+        display: block;
+        animation: fadeIn 0.3s ease-out;
+    }
+    
+    /* Chatbot Styles */
+    .chatbot {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    
+    .chatbot-toggle {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .chatbot-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    .chatbot-window {
+        position: absolute;
+        bottom: 95px;
+        right: 0;
+        width: 700px;
+        height: 650px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    .chatbot-window.open {
+        display: flex;
+        animation: slideUp 0.3s ease-out;
+    }
+    
+    .chatbot-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    
+    .chatbot-title {
+        font-weight: bold;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .chatbot-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.7rem;
+        cursor: pointer;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
+    }
+    
+    .chatbot-close:hover {
+        background: rgba(255,255,255,0.2);
+    }
+    
+    .chatbot-messages {
+        flex: 1;
+        padding: 1.5rem;
+        overflow-y: auto;
+        background: #f8f9fa;
+        min-height: 0;
+    }
+    
+    .message {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .message.user {
+        flex-direction: row-reverse;
+    }
+    
+    .message-content {
+        max-width: 80%;
+        padding: 1rem 1.5rem;
+        border-radius: 25px;
+        word-wrap: break-word;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .message.bot .message-content {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-bottom-left-radius: 10px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+    
+    .message.user .message-content {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-bottom-right-radius: 10px;
+    }
+    
+    .message-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+    
+    .message.bot .message-avatar {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    
+    .message.user .message-avatar {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .chatbot-input-area {
+        padding: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+        background: white;
+        flex-shrink: 0;
+    }
+    
+    .chatbot-input-form {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .chatbot-input {
+        flex: 1;
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 30px;
+        outline: none;
+        font-size: 1rem;
+    }
+    
+    .chatbot-input:focus {
+        border-color: #667eea;
+    }
+    
+    .chatbot-send {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    
+    .chatbot-send:hover {
+        transform: scale(1.05);
+    }
+    
+    .chatbot-send:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .quick-questions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .quick-question-btn {
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .quick-question-btn:hover {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+    }
+    
+    .typing-indicator {
+        display: none;
+        padding: 1rem 1.5rem;
+        color: #666;
+        font-style: italic;
+        font-size: 1rem;
+    }
+    
+    .typing-indicator.show {
+        display: block;
+    }
+    
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-size: 1rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    
+    .comparison-table th {
+        background: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .chatbot-action-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.chatbot-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+    
+    /* Contact Section */
+    .contact-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 0;
+        margin-top: 3rem;
+    }
+    
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .contact-card {
+        background: rgba(255,255,255,0.1);
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+    
+    .contact-card i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #4facfe;
+    }
+    
+    .contact-card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    
+    /* Footer */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+    }
+
+    .welcome-popup {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-popup-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.welcome-popup h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+}
+
+.voucher-highlight {
+    background: rgba(255,255,255,0.2);
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+    border: 2px dashed rgba(255,255,255,0.5);
+}
+
+.voucher-code {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4caf50;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+
+.popup-close {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.popup-close:hover {
+    background: rgba(255,255,255,0.3);
+}
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+    
+    .close:hover {
+        color: black;
+    }
+    
+    .login-form {
+        margin-top: 2rem;
+    }
+    
+    .sso-buttons {
+        margin: 1rem 0;
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .btn-google {
+        background-color: #db4437;
+        color: white;
+        flex: 1;
+    }
+    
+    .btn-microsoft {
+        background-color: #0078d4;
+        color: white;
+        flex: 1;
+    }
+    
+    .divider {
+        text-align: center;
+        margin: 1rem 0;
+        position: relative;
+    }
+    
+    .divider:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #e0e0e0;
+    }
+    
+    .divider span {
+        background: white;
+        padding: 0 1rem;
+        color: #666;
+    }
+    
+    /* Warenkorb Bilder */
+    .cart-item-image.sunrise-detail,
+    .cart-item-image.sunrise {
+        background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    .cart-item-image.dj-balloon-detail,
+    .cart-item-image.dj-balloon {
+        background-image: url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Party%202%20on%20the%20balloon.png?Web=1');
+    }
+    
+    .cart-item-image.alpine-detail,
+    .cart-item-image.alpine {
+        background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    
+    /* VERBESSERTER WARENKORB - HIER BEGINNEN DIE NEUEN STYLES */
+    .cart-page {
+        padding: 2rem 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: 80vh;
+    }
+    
+    .cart-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+    }
+    
+    .cart-items {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .cart-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cart-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 200px;
+        height: 200px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    
+    .cart-header h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    
+    .cart-header i {
+        font-size: 2rem;
+        color: rgba(255,255,255,0.9);
+    }
+    
+    .cart-item {
+        padding: 2rem;
+        border-bottom: 1px solid #f0f0f0;
+        display: grid;
+        grid-template-columns: 140px 1fr auto;
+        gap: 2rem;
+        align-items: center;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .cart-item:hover {
+        background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+    }
+    
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+    
+    .cart-item-image {
+        width: 140px;
+        height: 100px;
+        border-radius: 15px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cart-item-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(255, 107, 107, 0.1));
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .cart-item:hover .cart-item-image::before {
+        opacity: 1;
+    }
+    
+    .cart-item:hover .cart-item-image {
+        transform: scale(1.05);
+    }
+    
+    .cart-item-details h3 {
+        margin: 0 0 0.8rem 0;
+        color: #333;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    
+    .cart-item-meta {
+        color: #667eea;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+    }
+    
+    .cart-item-meta i {
+        color: #ff6b6b;
+    }
+    
+    .cart-item-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.3rem;
+    }
+    
+    .cart-item-features li {
+        font-size: 0.9rem;
+        color: #666;
+        padding: 0.3rem 0;
+        position: relative;
+    }
+    
+    .cart-item-features li:before {
+        content: "✨";
+        color: #4caf50;
+        font-weight: bold;
+        margin-right: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .cart-item-controls {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+    }
+    
+    .cart-quantity {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: #f8f9fa;
+        border-radius: 25px;
+        padding: 0.5rem;
+        border: 2px solid #e9ecef;
+    }
+    
+    .cart-quantity-btn {
+        width: 35px;
+        height: 35px;
+        border: none;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+    }
+    
+    .cart-quantity-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .cart-quantity-btn:active {
+        transform: translateY(0);
+    }
+    
+    .cart-quantity-display {
+        font-size: 1.3rem;
+        font-weight: bold;
+        min-width: 40px;
+        text-align: center;
+        color: #333;
+    }
+    
+    .cart-item-price {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #ff6b6b;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(255, 107, 107, 0.1);
+    }
+    
+    .cart-remove {
+        background: none;
+        border: none;
+        color: #999;
+        cursor: pointer;
+        font-size: 0.9rem;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .cart-remove:hover {
+        color: white;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    }
+    
+    .cart-summary {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 2rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+        border: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .cart-summary h3 {
+        margin: 0 0 1.5rem 0;
+        color: #333;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+    
+    .cart-summary h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 2px;
+    }
+    
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .summary-row:last-of-type {
+        border-bottom: none;
+    }
+    
+    .summary-row.total {
+        border-top: 3px solid #667eea;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #333;
+        background: linear-gradient(135deg, #f8f9ff, #fff);
+        padding: 1.5rem;
+        margin: 1.5rem -2rem 0 -2rem;
+        border-radius: 15px;
+    }
+    
+    .summary-discount {
+        color: #4caf50;
+        font-weight: bold;
+        text-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+    }
+    
+    .checkout-btn {
+        width: 100%;
+        padding: 1.2rem;
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .checkout-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .checkout-btn:hover::before {
+        left: 100%;
+    }
+    
+    .checkout-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+    }
+    
+    .checkout-btn:active {
+        transform: translateY(-1px);
+    }
+    
+    .continue-shopping {
+        display: block;
+        text-align: center;
+        color: #667eea;
+        text-decoration: none;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .continue-shopping:hover {
+        background: linear-gradient(135deg, #f8f9ff, #fff);
+        color: #5a67d8;
+        text-decoration: none;
+        transform: translateY(-2px);
+    }
+    
+    .wallet-section {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px dashed #ddd;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .wallet-section:hover {
+        border-color: #667eea;
+        background: linear-gradient(135deg, #f8f9ff, #fff);
+    }
+    
+    .wallet-btn {
+        background: linear-gradient(135deg, #000, #333);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .wallet-btn:hover {
+        background: linear-gradient(135deg, #333, #000);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    .empty-cart {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #666;
+        background: linear-gradient(135deg, #f8f9ff, #fff);
+    }
+    
+    .empty-cart i {
+        font-size: 5rem;
+        color: #ddd;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .empty-cart h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    /* Verbesserte Gutschein-Sektion */
+    .voucher-section {
+        background: linear-gradient(135deg, #e8f5e9, #f1f8f2);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        border: 2px solid #4caf50;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .voucher-section::before {
+        content: '🎁';
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        opacity: 0.3;
+    }
+    
+    .voucher-section h4 {
+        color: #2e7d32;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .voucher-input-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .voucher-input {
+        flex: 1;
+        padding: 1rem;
+        border: 2px solid #c8e6c9;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .voucher-input:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+        outline: none;
+    }
+    
+    .voucher-btn {
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+    }
+    
+    .voucher-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        background: linear-gradient(135deg, #45a049, #4caf50);
+    }
+    
+    .discount-applied {
+        color: #2e7d32;
+        font-weight: bold;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        background: rgba(76, 175, 80, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .success-page {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 80vh;
+}
+
+.success-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.success-header {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.success-header i {
+    font-size: 4rem;
+    color: #4caf50;
+    margin-bottom: 1rem;
+}
+
+.success-header h1 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.order-summary {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #667eea;
+}
+
+.ticket-options {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.ticket-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.ticket-btn {
+    padding: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ticket-btn.pdf {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+.ticket-btn.email {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+}
+
+.ticket-btn.wallet {
+    background: linear-gradient(135deg, #000, #333);
+    color: white;
+}
+
+.ticket-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.back-home-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .ticket-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+    /* Payment Methods Section */
+.payment-methods {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.payment-methods h4 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.payment-option:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.payment-option.selected {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.payment-icon.paypal {
+    background: #0070ba;
+    color: white;
+}
+
+.payment-icon.apple-pay {
+    background: #000;
+    color: white;
+}
+
+.payment-icon.klarna {
+    background: #ffb3c7;
+    color: #333;
+}
+
+.payment-icon.credit-card {
+    background: #28a745;
+    color: white;
+}
+
+.payment-details {
+    flex: 1;
+}
+
+.payment-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.payment-description {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.express-checkout {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px dashed #ddd;
+}
+
+.express-btn {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.express-btn.paypal {
+    background: linear-gradient(135deg, #0070ba, #005ea6);
+    color: white;
+}
+
+.express-btn.apple {
+    background: linear-gradient(135deg, #000, #333);
+    color: white;
+}
+
+.express-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Advanced Search Dropdown */
+.search-section {
+    position: relative;
+}
+
+.search-form {
+    position: relative;
+    width: 1000px; /* Hinzufügen - macht das ganze Suchfeld breiter */
+    margin: 0 auto;
+}
+
+.search-input-container {
+    position: relative;
+    flex: 1;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: none;
+    max-height: 600px;
+    overflow-y: auto;
+    min-width: 1200px;
+}
+
+.search-dropdown.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.search-dropdown-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem; /* von 2rem auf 3rem */
+}
+
+.dropdown-section h4 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.search-suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-suggestions li {
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.search-suggestions li:hover {
+    color: #667eea;
+}
+
+.search-suggestions li:last-child {
+    border-bottom: none;
+}
+
+.popular-experiences {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experience-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.experience-item:hover {
+    background: #e3f2fd;
+    transform: translateY(-2px);
+}
+
+.experience-image {
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.experience-image.balloon {
+    background-image: url('https://outdoor-welten.de/files/att_pictures/magazines_articles/00587/web-02_ballonfahrt-ber--_dietmar-denger.jpg');
+}
+
+.experience-image.surfing {
+    background-image: url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/surfen.png?Web=1');
+}
+
+.experience-image.local-tours {
+    background-image: url('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/munich%20lunch.png?Web=1');
+}
+
+.experience-details h5 {
+    margin: 0 0 0.3rem 0;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.experience-location {
+    font-size: 0.8rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.experience-price {
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+}
+
+.category-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.category-item:hover {
+    background: #f0f0f0;
+}
+
+.category-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+.category-name {
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.view-all-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.view-all-link:hover {
+    color: #5a67d8;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .search-dropdown-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .experience-item {
+        padding: 0.8rem;
+    }
+    
+    .experience-image {
+        width: 50px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .express-checkout {
+        flex-direction: column;
+    }
+}
+    
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+    
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+    
+        .search-form {
+            flex-direction: column;
+        }
+    
+        .login-buttons {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    
+        .sso-buttons {
+            flex-direction: column;
+        }
+    
+        .product-detail-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+        }
+    
+        .booking-options {
+            grid-template-columns: 1fr;
+        }
+    
+        .highlight-grid {
+            grid-template-columns: 1fr;
+        }
+    
+        .tab-buttons {
+            flex-wrap: wrap;
+        }
+    
+        .tab-btn {
+            padding: 0.5rem 1rem;
+        }
+    
+        .chatbot-window {
+            width: calc(100vw - 40px);
+            height: calc(100vh - 200px);
+            right: 20px;
+            bottom: 100px;
+        }
+    
+        /* Mobile Cart Styles */
+        .cart-container {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 15px;
+        }
+        
+        .cart-item {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .cart-item-image {
+            width: 100%;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .cart-item-controls {
+            text-align: center;
+            align-items: center;
+        }
+        
+        .cart-item-features {
+            grid-template-columns: 1fr;
+        }
+        
+        .voucher-input-group {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .cart-header {
+            padding: 1.5rem;
+        }
+        
+        .cart-header h2 {
+            font-size: 1.4rem;
+        }
+        
+        .cart-summary {
+            position: static;
+            margin-top: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <img src="https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/ChatGPT%20Image%208.%20Sept.%202025,%2017_48_08.png?Web=1" alt="Logo" style="height: 6rem; margin-right: 1,5rem; vertical-align: middle;"> 
+                Erlebnis-Helden
+            </a>
+            <ul class="nav-links">
+                <li><a href="#erlebnisse" onclick="showPage('home')">Erlebnisse</a></li>
+                <li><a href="#kategorien" onclick="showPage('home')">Kategorien</a></li>
+                <li><a href="#neuheiten" onclick="showPage('home')">Neuheiten</a></li>
+                <li><a href="#kontakt" onclick="showPage('home')">Kontakt</a></li>
+            </ul>
+            <div class="login-buttons" id="authSection">
+                <a href="#" class="btn btn-secondary" onclick="openModal('loginModal')">
+                    <i class="fas fa-sign-in-alt"></i> Anmelden
+                </a>
+                <a href="#" class="btn btn-primary" onclick="openModal('registerModal')">
+                    <i class="fas fa-user-plus"></i> Registrieren
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+       <!-- Hero Section -->
+<section class="hero" id="heroSection">
+    <div class="container">
+        <div class="hero-content">
+            <h1 id="heroTitle">Unvergessliche Abenteuer erleben</h1>
+            <p id="heroSubtitle">Entdecke außergewöhnliche Erlebnisse und werde zum Helden Deiner eigenen Geschichte</p>
+            <div class="hero-cta">
+                <a href="#erlebnisse" class="btn btn-primary btn-large">
+                    <i class="fas fa-rocket"></i> Abenteuer entdecken
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+       <!-- Advanced Search Section -->
+<section class="search-section">
+    <div class="container">
+        <form class="search-form">
+            <div class="search-input-container">
+                <input type="text" class="search-input" placeholder="Nach Erlebnissen suchen..." 
+                       id="main-search-input" 
+                       onfocus="showSearchDropdown()" 
+                       oninput="handleSearchInput()"
+                       autocomplete="off">
+                       
+                <!-- Advanced Search Dropdown -->
+                <div class="search-dropdown" id="search-dropdown">
+                    <div class="search-dropdown-content">
+                        <!-- Aktuelle Suchtrends -->
+                        <div class="dropdown-section">
+                            <h4>Aktuelle Suchtrends</h4>
+                            <ul class="search-suggestions">
+                                <li onclick="selectSearch('hamburg')">hamburg</li>
+                                <li onclick="selectSearch('münchen')">münchen</li>
+                                <li onclick="selectSearch('berlin')">berlin</li>
+                                <li onclick="selectSearch('köln')">köln</li>
+                                <li onclick="selectSearch('stuttgart')">stuttgart</li>
+                                <li onclick="selectSearch('wellness')">wellness</li>
+                                <li onclick="selectSearch('frankfurt')">frankfurt</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Beliebte Erlebnisse -->
+                        <div class="dropdown-section">
+                            <h4>Beliebte Erlebnisse</h4>
+                            <div class="popular-experiences">
+                                <div class="experience-item" onclick="selectExperience('heissluftballon')">
+                                    <div class="experience-image balloon"></div>
+                                    <div class="experience-details">
+                                        <h5>Heißluftballon-Fahrt</h5>
+                                        <div class="experience-location">
+                                            <i class="fas fa-map-marker-alt"></i> Deutschlandweit
+                                        </div>
+                                        <div class="experience-price">ab 249,00 €</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="experience-item" onclick="selectExperience('surfen')">
+                                    <div class="experience-image surfing"></div>
+                                    <div class="experience-details">
+                                        <h5>Surf-Kurs für Anfänger</h5>
+                                        <div class="experience-location">
+                                            <i class="fas fa-map-marker-alt"></i> an 15 Orten
+                                        </div>
+                                        <div class="experience-price">ab 89,90 €</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="experience-item" onclick="selectExperience('lokale-touren')">
+                                    <div class="experience-image local-tours"></div>
+                                    <div class="experience-details">
+                                        <h5>Kulinarische Stadtführung</h5>
+                                        <div class="experience-location">
+                                            <i class="fas fa-map-marker-alt"></i> München & mehr
+                                        </div>
+                                        <div class="experience-price">ab 45,00 €</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="view-all-link" onclick="viewAllExperiences()">
+                                Alle Erlebnisse entdecken <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Beliebte Kategorien -->
+                        <div class="dropdown-section">
+                            <h4>Beliebte Kategorien</h4>
+                            <div class="category-icons">
+                                <div class="category-item" onclick="selectCategory('geschenkboxen')">
+                                    <div class="category-icon">
+                                        <i class="fas fa-gift"></i>
+                                    </div>
+                                    <div class="category-name">Geschenkboxen</div>
+                                </div>
+                                
+                                <div class="category-item" onclick="selectCategory('wertgutscheine')">
+                                    <div class="category-icon">
+                                        <i class="fas fa-certificate"></i>
+                                    </div>
+                                    <div class="category-name">Wertgutscheine</div>
+                                </div>
+                                
+                                <div class="category-item" onclick="selectCategory('reisen')">
+                                    <div class="category-icon">
+                                        <i class="fas fa-suitcase"></i>
+                                    </div>
+                                    <div class="category-name">Reisen</div>
+                                </div>
+                                
+                                <div class="category-item" onclick="selectCategory('fliegen-fallen')">
+                                    <div class="category-icon">
+                                        <i class="fa-solid fa-wind"></i>
+                                    </div>
+                                    <div class="category-name">Fliegen & Fallen</div>
+                                </div>
+                                
+                                <div class="category-item" onclick="selectCategory('motorpower')">
+                                    <div class="category-icon">
+                                        <i class="fas fa-car"></i>
+                                    </div>
+                                    <div class="category-name">Motorpower</div>
+                                </div>
+                                
+                                <div class="category-item" onclick="selectCategory('essen-trinken')">
+                                    <div class="category-icon">
+                                        <i class="fa-solid fa-utensils"></i>
+                                    </div>
+                                    <div class="category-name">Essen & Trinken</div>
+                                </div>
+                                
+                                <div class="category-item" onclick="selectCategory('wassersport')">
+                                    <div class="category-icon">
+                                        <i class="fa-solid fa-water"></i>
+                                    </div>
+                                    <div class="category-name">Wassersport</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <select class="search-input">
+                <option value="">Kategorie wählen</option>
+                <option value="luftfahrt">Luftfahrt</option>
+                <option value="motorsport">Motorsport</option>
+                <option value="wellness">Wellness</option>
+                <option value="outdoor">Outdoor</option>
+            </select>
+            <button type="submit" class="search-btn">
+                <i class="fas fa-search"></i> Suchen
+            </button>
+        </form>
+    </div>
+</section>
+
+        <!-- Categories Section -->
+        <section class="categories" id="kategorien">
+            <div class="container">
+                <h2 class="section-title">Beliebte Kategorien</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-image balloon">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Heißluftballon</h3>
+                            <p>Schwebe über malerische Landschaften und genieße atemberaubende Ausblicke</p>
+                            <div class="price">ab 199€</div>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image motorsport">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Motorsport</h3>
+                            <p>Erlebe pure Geschwindigkeit und Adrenalin auf der Rennstrecke</p>
+                            <div class="price">ab 149€</div>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image wellness">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Lokale Touren</h3>
+                            <p>Entdecke einzigartige Kulinarik und lokale Orte</p>
+                            <div class="price">ab 89€</div>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image outdoor">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Wasser Action</h3>
+                            <p>Spüre den Adrenalinkick bei aufregenden Wasseraktivitäten</p>
+                            <div class="price">ab 79€</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section - NUR NOCH 3 PRODUKTE (EXKLUSIVE BALLONFAHRT ENTFERNT) -->
+        <section class="products" id="erlebnisse">
+            <div class="container">
+                <h2 class="section-title">Top Heißluftballon-Erlebnisse</h2>
+                <div class="product-grid">
+                    <div class="product-card" onclick="showProductDetail('sunrise-balloon')">
+                        <div class="product-image sunrise"></div>
+                        <div class="product-content">
+                            <h3 class="product-title">Romantische Ballonfahrt zum Sonnenaufgang</h3>
+                            <p class="product-description">
+                                Erlebe den magischen Moment des Sonnenaufgangs aus luftiger Höhe. 
+                                Eine unvergessliche Fahrt über die malerische deutsche Landschaft.
+                            </p>
+                            <ul class="product-features">
+                                <li>3-4 Stunden Gesamterlebnis</li>
+                                <li>1 Stunde Ballonfahrt</li>
+                                <li>Sektempfang nach der Landung</li>
+                                <li>Teilnehmerurkunde</li>
+                                <li>Erfahrener Ballonpilot</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">249€</div>
+                                <button class="btn btn-primary" onclick="event.stopPropagation(); addToCart(this)">
+                                    <i class="fas fa-shopping-cart"></i> Buchen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DJ-BALLONFAHRT AN 2. POSITION -->
+                    <div class="product-card" onclick="showProductDetail('dj-balloon')">
+                        <div class="product-image dj-balloon"></div>
+                        <div class="product-content">
+                            <h3 class="product-title">DJ-Ballonfahrt München</h3>
+                            <p class="product-description">
+                                Einzigartig in Deutschland! Ballonfahrt mit Live-DJ an Bord. 
+                                Coole Beats und spektakuläre Aussichten in einem unvergesslichen Erlebnis.
+                            </p>
+                            <ul class="product-features">
+                                <li>Live-DJ mit cooler Playlist</li>
+                                <li>Party-Atmosphäre in luftiger Höhe</li>
+                                <li>Spezielle DJ-Cocktails</li>
+                                <li>Instagram-taugliche Momente</li>
+                                <li>Perfekt für Gruppen</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">299€</div>
+                                <button class="btn btn-primary" onclick="event.stopPropagation(); addToCart(this)">
+                                    <i class="fas fa-shopping-cart"></i> Buchen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" onclick="showProductDetail('alpine-balloon')">
+                        <div class="product-image alpine"></div>
+                        <div class="product-content">
+                            <h3 class="product-title">Abenteuer-Ballonfahrt über die Alpen</h3>
+                            <p class="product-description">
+                                Spektakuläre Aussichten auf schneebedeckte Gipfel und kristallklare Bergseen. 
+                                Ein Erlebnis für echte Abenteurer.
+                            </p>
+                            <ul class="product-features">
+                                <li>Fahrt über das Alpenvorland</li>
+                                <li>Atemberaubende Bergpanoramen</li>
+                                <li>Wettergarantie mit Ersatztermin</li>
+                                <li>Heißgetränke an Bord</li>
+                                <li>Zertifizierter Bergballonpilot</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">329€</div>
+                                <button class="btn btn-primary" onclick="event.stopPropagation(); addToCart(this)">
+                                    <i class="fas fa-shopping-cart"></i> Buchen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="kontakt">
+            <div class="container">
+                <h2 class="section-title">Teamevent geplant? Kontaktiere unsere Experten:</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Sarah Weber</h3>
+                        <p>Luftfahrt-Spezialistin</p>
+                        <p><i class="fas fa-phone"></i> +49 89 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> sarah.weber@erlebnis-helden.de</p>
+                        <button class="btn btn-primary" onclick="contactSales('Sarah Weber')">
+                            Kontakt aufnehmen
+                        </button>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Mike Schmidt</h3>
+                        <p>Abenteuer-Berater</p>
+                        <p><i class="fas fa-phone"></i> +49 89 123-4568</p>
+                        <p><i class="fas fa-envelope"></i> mike.schmidt@erlebnis-helden.de</p>
+                        <button class="btn btn-primary" onclick="contactSales('Michael Schmidt')">
+                            Kontakt aufnehmen
+                        </button>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Kundenservice</p>
+                        <p><i class="fas fa-phone"></i> +49 800 123-4569</p>
+                        <p><i class="fas fa-envelope"></i> support@erlebnis-helden.de</p>
+                        <button class="btn btn-primary" onclick="openModal('supportModal')">
+                            Support kontaktieren
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Product Detail Page -->
+    <div id="productDetail" class="page">
+        <!-- Breadcrumb -->
+        <section class="breadcrumb">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="#" onclick="showPage('home')">Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <a href="#" onclick="showPage('home')">Heißluftballon</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span id="breadcrumb-product">Produktname</span>
+                </nav>
+            </div>
+        </section>
+
+        <div class="container">
+            <a href="#" class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> Zurück zur Übersicht
+            </a>
+
+            <!-- Product Detail Content -->
+            <div class="product-detail">
+                <div class="product-detail-content">
+                    <!-- Gallery Section -->
+                    <div class="product-gallery">
+                        <div class="main-image sunrise-detail" id="main-product-image"></div>
+                        <div class="thumbnail-grid">
+                            <div class="thumbnail thumb1" onclick="changeMainImage('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                            <div class="thumbnail thumb2" onclick="changeMainImage('https://outdoor-welten.de/files/att_pictures/magazines_articles/00587/web-02_ballonfahrt-ber--_dietmar-denger.jpg')"></div>
+                            <div class="thumbnail thumb3" onclick="changeMainImage('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Party%20on%20the%20balloon.png?Web=1')"></div>
+                            <div class="thumbnail thumb4" onclick="changeMainImage('https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Hot%20Air%20Balloon%20Rides%20for%20Two%20in%20Chicago%20_%202%20Person%20Balloon%20Ride.png?Web=1')"></div>
+                        </div>
+                    </div>
+
+                    <!-- Product Info Section -->
+                    <div class="product-info">
+                        <h1 id="detail-product-title">Romantische Ballonfahrt zum Sonnenaufgang</h1>
+                        
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">(4.9/5) - 187 Bewertungen</span>
+                        </div>
+
+                        <div class="product-price-large" id="detail-product-price">249€</div>
+                        <p class="price-per-person">pro Person</p>
+
+                        <div class="product-highlights">
+                            <h3>Highlights</h3>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3-4 Stunden Erlebnis</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max. 12 Teilnehmer</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Teilnehmerurkunde</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-wine-glass"></i>
+                                    <span>Sektempfang inklusive</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Vollversichert</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Wettergarantie</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Booking Section -->
+                        <div class="booking-section">
+                            <h3>Jetzt buchen</h3>
+                            <div class="booking-options">
+                                <div class="form-group">
+                                    <label for="booking-date">Wunschtermin:</label>
+                                    <input type="date" id="booking-date" name="date">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-time">Uhrzeit:</label>
+                                    <select id="booking-time" name="time">
+                                        <option value="sunrise">Sonnenaufgang (05:30)</option>
+                                        <option value="morning">Vormittag (09:00)</option>
+                                        <option value="evening">Abend (18:00)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Anzahl Personen:</label>
+                                <div class="quantity-selector">
+                                    <button type="button" class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                                    <span class="quantity-display" id="quantity">1</span>
+                                    <button type="button" class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                                </div>
+                           <!-- Gutschein-Sektion -->
+                            <!--
+<div class="voucher-section">
+    <br></br>
+    <h4><i class="fas fa-gift"></i> Gutscheincode</h4>
+    <div class="voucher-input-group">
+        
+        <input type="text" class="voucher-input" id="voucher-code" placeholder="Gutscheincode eingeben">
+        <button type="button" class="voucher-btn" onclick="applyVoucher()">
+            <i class="fas fa-gift"></i> Einlösen
+        </button>
+        <br></br>
+    </div>
+    <div id="discount-message"></div>
+</div> --> 
+                            </div>
+
+                            <div class="total-price">
+                                Gesamtpreis: <span id="total-price">249€</span>
+                            </div>
+
+                            <button class="book-now-btn" onclick="bookNow()">
+                                <i class="fas fa-calendar-check"></i> Jetzt buchen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Product Tabs -->
+                <div class="product-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="showTab('description')">Beschreibung</button>
+                        <button class="tab-btn" onclick="showTab('timeline')">Ablauf</button>
+                        <button class="tab-btn" onclick="showTab('included')">Leistungen</button>
+                        <button class="tab-btn" onclick="showTab('reviews')">Bewertungen</button>
+                    </div>
+
+                    <div id="description" class="tab-content active">
+                        <h3>Erlebnisbeschreibung</h3>
+                        <p>Erlebe den magischen Moment des Sonnenaufgangs aus luftiger Höhe bei unserer romantischen Heißluftballonfahrt. Während die ersten Sonnenstrahlen die Landschaft in goldenes Licht tauchen, schwebst Du sanft über malerische Felder, Wälder und Dörfer.</p>
+                        
+                        <p>Unser erfahrener Ballonpilot führt Dich sicher durch dieses unvergessliche Abenteuer. Die ruhige Fahrt in bis zu 1000 Metern Höhe bietet Dir spektakuläre Ausblicke und eine einzigartige Perspektive auf die Welt unter Dir.</p>
+                        
+                        <p>Nach der sanften Landung erwarten Dich ein Sektempfang und eine persönliche Teilnehmerurkunde als Erinnerung an dieses besondere Erlebnis.</p>
+
+                        <h4>Besondere Momente:</h4>
+                        <ul>
+                            <li>Magischer Sonnenaufgang aus der Vogelperspektive</li>
+                            <li>Absolute Ruhe und Stille in luftiger Höhe</li>
+                            <li>360-Grad-Panoramablick auf die Landschaft</li>
+                            <li>Gemeinschaftsgefühl mit anderen Abenteurern</li>
+                            <li>Professionelle Betreuung durch zertifizierte Piloten</li>
+                        </ul>
+                    </div>
+
+                    <div id="timeline" class="tab-content">
+                        <h3>Tagesablauf</h3>
+                        <div class="experience-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-time">04:30 Uhr</div>
+                                <h4>Treffpunkt & Begrüßung</h4>
+                                <p>Gemeinsamer Treffpunkt am Startplatz. Begrüßung durch das Team und erste Einweisung.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">05:00 Uhr</div>
+                                <h4>Ballonvorbereitung</h4>
+                                <p>Aufbau und Befüllung des Heißluftballons. Du kannst dabei zusehen und mithelfen.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">05:30 Uhr</div>
+                                <h4>Start der Ballonfahrt</h4>
+                                <p>Sanfter Start in den Himmel, genau rechtzeitig für den spektakulären Sonnenaufgang.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">06:30 Uhr</div>
+                                <h4>Landung & Sektempfang</h4>
+                                <p>Sichere Landung und anschließender Sektempfang mit dem gesamten Team.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">07:30 Uhr</div>
+                                <h4>Übergabe der Urkunde</h4>
+                                <p>Persönliche Teilnehmerurkunde als Erinnerung an Dein Abenteuer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="included" class="tab-content">
+                        <h3>Enthaltene Leistungen</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div>
+                                <h4 style="color: #4caf50; margin-bottom: 1rem;">✓ Inklusive</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-check" style="color: #4caf50; margin-right: 0.5rem;"></i>
+                                        Heißluftballonfahrt (ca. 1 Stunde)
+                                    </li>
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-check" style="color: #4caf50; margin-right: 0.5rem;"></i>
+                                        Professioneller Ballonpilot
+                                    </li>
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-check" style="color: #4caf50; margin-right: 0.5rem;"></i>
+                                        Sektempfang nach der Landung
+                                    </li>
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-check" style="color: #4caf50; margin-right: 0.5rem;"></i>
+                                        Teilnehmerurkunde
+                                    </li>
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-check" style="color: #4caf50; margin-right: 0.5rem;"></i>
+                                        Vollversicherung
+                                    </li>
+                                    <li style="padding: 0.5rem 0;">
+                                        <i class="fas fa-check" style="color: #4caf50; margin-right: 0.5rem;"></i>
+                                        Wettergarantie mit Ersatztermin
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #ff6b6b; margin-bottom: 1rem;">✗ Nicht enthalten</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-times" style="color: #ff6b6b; margin-right: 0.5rem;"></i>
+                                        Anreise zum Startplatz
+                                    </li>
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-times" style="color: #ff6b6b; margin-right: 0.5rem;"></i>
+                                        Frühstück vor der Fahrt
+                                    </li>
+                                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                                        <i class="fas fa-times" style="color: #ff6b6b; margin-right: 0.5rem;"></i>
+                                        Professionelle Fotos
+                                    </li>
+                                    <li style="padding: 0.5rem 0;">
+                                        <i class="fas fa-times" style="color: #ff6b6b; margin-right: 0.5rem;"></i>
+                                        Übernachtung
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                            <h4>Wichtige Informationen</h4>
+                            <ul>
+                                <li>Mindestalter: 6 Jahre (in Begleitung Erwachsener)</li>
+                                <li>Maximales Gewicht: 120 kg pro Person</li>
+                                <li>Wetterabhängig - bei schlechtem Wetter wird ein Ersatztermin angeboten</li>
+                                <li>Schwangere und Personen mit Herzproblemen können nicht teilnehmen</li>
+                                <li>Festes Schuhwerk und warme Kleidung empfohlen</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="reviews" class="tab-content">
+                        <h3>Kundenbewertungen</h3>
+
+                        <div class="review-summary">
+                            <div class="summary-grid">
+                                <div class="summary-column positive">
+                                    <h5><i class="fas fa-thumbs-up"></i> Das gefällt den Gästen</h5>
+                                    <ul class="summary-points">
+                                        <li>Spektakuläre Aussicht und Fotomöglichkeiten</li>
+                                        <li>Professionelle und freundliche Piloten</li>
+                                        <li>Perfekte Organisation und Pünktlichkeit</li>
+                                        <li>Unvergessliches romantisches Erlebnis</li>
+                                        <li>Sektempfang nach der Landung</li>
+                                    </ul>
+                                </div>
+                                <div class="summary-column negative">
+                                    <h5><i class="fas fa-thumbs-down"></i> Verbesserungspotential</h5>
+                                    <ul class="summary-points">
+                                        <li>Früher Startzeit (4:30 Uhr)</li>
+                                        <li>Wetterabhängigkeit</li>
+                                        <li>Lange Wartezeit bei Terminverschiebung</li>
+                                        <li>Anfahrt zum Startplatz nicht inklusive</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div>
+                                    <div class="reviewer-name">Anna M.</div>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-date">15.03.2024</div>
+                            </div>
+                            <p>"Absolut unvergesslich! Der Sonnenaufgang war magisch und die gesamte Crew war super professionell. Kann ich nur weiterempfehlen!"</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div>
+                                    <div class="reviewer-name">Thomas K.</div>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-date">02.03.2024</div>
+                            </div>
+                            <p>"Perfekt organisiert und ein traumhaftes Erlebnis. Die Aussicht war spektakulär und der Sektempfang danach hat alles abgerundet."</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div>
+                                    <div class="reviewer-name">Lisa & Mark</div>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-date">28.02.2024</div>
+                            </div>
+                            <p>"Wir haben die Ballonfahrt als Hochzeitsgeschenk bekommen - einfach der Wahnsinn! Sehr sicher und wunderschön. Danke für dieses Erlebnis!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot - OPTIMIERTE GRÖSSE -->
+    <div class="chatbot">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments" id="chatbot-icon"></i>
+        </button>
+        
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    Erlebnis-Berater
+                </div>
+                <button class="chatbot-close" onclick="toggleChatbot()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot">
+                    <div class="message-avatar">🎈</div>
+                    <div class="message-content">
+                        Hallo! Ich bin Ihr persönlicher Erlebnis-Berater. Ich kann Ihnen bei Fragen zu unseren Heißluftballon-Fahrten helfen, verschiedene Erlebnisse vergleichen oder Empfehlungen geben. Wie kann ich Ihnen helfen?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typing-indicator">
+                Bot schreibt...
+            </div>
+            
+            <div class="chatbot-input-area">
+                <div class="quick-questions">
+                    <button class="quick-question-btn" onclick="askQuickQuestion('Gibt es das Erlebnis auch unter 400€?')">
+                        Unter 400€?
+                    </button>
+                    <button class="quick-question-btn" onclick="askQuickQuestion('Gibt es das Erlebnis auch in München?')">
+                        In München?
+                    </button>
+                    <button class="quick-question-btn" onclick="askQuickQuestion('Kannst du die 2 vergleichen?')">
+                        Vergleichen
+                    </button>
+                    <button class="quick-question-btn" onclick="askQuickQuestion('Kann man das zu zweit machen?')">
+                        Zu zweit?
+                    </button>
+                    <button class="quick-question-btn" onclick="askQuickQuestion('Wie hoch fliegt der Ballon?')">
+                        Flughöhe?
+                    </button>
+                </div>
+                
+                <form class="chatbot-input-form" onsubmit="sendMessage(event)">
+                    <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Stellen Sie mir eine Frage..." autocomplete="off">
+                    <button type="submit" class="chatbot-send" id="chatbot-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Cart Page -->
+<div id="cartPage" class="page">
+    <div class="cart-page">
+        <div class="container">
+            <a href="#" class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> Zurück zu den Erlebnissen
+            </a>
+            
+            <div class="cart-container">
+                <div class="cart-items">
+                    <div class="cart-header">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h2>Ihr Warenkorb</h2>
+                        <span id="cart-count">1 Artikel</span>
+                    </div>
+                    
+                    <div id="cart-items-container">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <h3>Zusammenfassung</h3>
+                    
+                    <div class="summary-row">
+                        <span>Zwischensumme:</span>
+                        <span id="cart-subtotal">0€</span>
+                    </div>
+                    
+                    <div class="summary-row" id="discount-row" style="display: none;">
+                        <span>Rabatt (15%):</span>
+                        <span class="summary-discount" id="cart-discount">-0€</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Versandkosten:</span>
+                        <span>Kostenlos</span>
+                    </div>
+                    
+                    <div class="summary-row total">
+                        <span>Gesamtsumme:</span>
+                        <span id="cart-total">0€</span>
+                    </div>
+                    
+                    <!-- Gutschein-Sektion im Warenkorb -->
+                    <div class="voucher-section" style="margin-top: 1.5rem;">
+                        <h4><i class="fas fa-gift"></i> Gutscheincode</h4>
+                        <div class="voucher-input-group">
+                            <input type="text" class="voucher-input" id="cart-voucher-code" placeholder="Gutscheincode eingeben">
+                            <button type="button" class="voucher-btn" onclick="applyCartVoucher()">
+                                <i class="fas fa-gift"></i> Einlösen
+                            </button>
+                        </div>
+                        <div id="cart-discount-message"></div>
+                    </div>
+
+                    <!-- Express Checkout -->
+<div class="express-checkout">
+    <button class="express-btn paypal" onclick="expressCheckout('paypal')">
+        <i class="fab fa-paypal"></i> PayPal
+    </button>
+    <button class="express-btn apple" onclick="expressCheckout('apple-pay')">
+        <i class="fab fa-apple"></i> Apple Pay
+    </button>
+</div>
+
+<!-- Payment Methods -->
+<div class="payment-methods">
+    <h4><i class="fas fa-credit-card"></i> Zahlungsmethode wählen</h4>
+    
+    <div class="payment-options">
+        <div class="payment-option selected" onclick="selectPayment('credit-card')">
+            <input type="radio" name="payment" id="credit-card" value="credit-card" checked>
+            <div class="payment-icon credit-card">
+                <i class="fas fa-credit-card"></i>
+            </div>
+            <div class="payment-details">
+                <div class="payment-name">Kreditkarte</div>
+                <div class="payment-description">Visa, Mastercard, Amex</div>
+            </div>
+        </div>
+        
+        <div class="payment-option" onclick="selectPayment('paypal')">
+            <input type="radio" name="payment" id="paypal" value="paypal">
+            <div class="payment-icon paypal">
+                <i class="fab fa-paypal"></i>
+            </div>
+            <div class="payment-details">
+                <div class="payment-name">PayPal</div>
+                <div class="payment-description">Sicher & schnell</div>
+            </div>
+        </div>
+        
+        <div class="payment-option" onclick="selectPayment('apple-pay')">
+            <input type="radio" name="payment" id="apple-pay" value="apple-pay">
+            <div class="payment-icon apple-pay">
+                <i class="fab fa-apple"></i>
+            </div>
+            <div class="payment-details">
+                <div class="payment-name">Apple Pay</div>
+                <div class="payment-description">Touch ID / Face ID</div>
+            </div>
+        </div>
+        
+        <div class="payment-option" onclick="selectPayment('klarna')">
+            <input type="radio" name="payment" id="klarna" value="klarna">
+            <div class="payment-icon klarna">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div class="payment-details">
+                <div class="payment-name">Klarna</div>
+                <div class="payment-description">Kauf auf Rechnung</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                    
+                    <button class="checkout-btn" onclick="proceedToCheckout()">
+                        <i class="fas fa-credit-card"></i> Zur Kasse
+                    </button>
+                    
+                    <a href="#" class="continue-shopping" onclick="showPage('home')">
+                        <i class="fas fa-arrow-left"></i> Weiter einkaufen
+                    </a>
+                    
+                    <!-- Wallet Integration -->
+                   <!-- <div class="wallet-section">
+                        <h4><i class="fas fa-wallet"></i> Zu Wallet hinzufügen</h4>
+                        <p>Fügen Sie Ihr Ticket direkt zu Apple Wallet oder Google Pay hinzu</p>
+                        <button class="wallet-btn" onclick="addToWallet()">
+                            <i class="fas fa-plus"></i> Zu Wallet hinzufügen
+                        </button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Success Page -->
+<div id="orderSuccessPage" class="page">
+    <div class="success-page">
+        <div class="container">
+            <div class="success-content">
+                <div class="success-header">
+                    <i class="fas fa-check-circle"></i>
+                    <h1>Buchung erfolgreich!</h1>
+                    <p>Vielen Dank für Ihre Bestellung. Ihre Tickets sind bereit!</p>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Buchungsübersicht</h3>
+                    <div id="order-items">
+                        <div class="order-item">
+                            <span>Ballonfahrt Deluxe (1x)</span>
+                            <span>299€</span>
+                        </div>
+                        <div class="order-item">
+                            <span>Zwischensumme</span>
+                            <span>299€</span>
+                        </div>
+                        <div class="order-item" style="color: #4caf50;">
+                            <span>Rabatt (abheben15) -15%</span>
+                            <span>-45€</span>
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <span>Gesamtbetrag: <strong id="order-final-total">254€</strong></span>
+                    </div>
+                </div>
+
+                <div class="ticket-options">
+                    <h3><i class="fas fa-ticket-alt"></i> Ihre Tickets</h3>
+                    <div class="ticket-actions">
+                        <button class="ticket-btn pdf" onclick="downloadPDF()">
+                            <i class="fas fa-file-pdf"></i> PDF herunterladen
+                        </button>
+                        <button class="ticket-btn email" onclick="sendEmail()">
+                            <i class="fas fa-envelope"></i> Per E-Mail senden
+                        </button>
+                        <button class="ticket-btn wallet" onclick="addToWalletSuccess()">
+                            <i class="fas fa-wallet"></i> Zu Wallet hinzufügen
+                        </button>
+                    </div>
+                </div>
+
+                <button class="back-home-btn" onclick="showPage('home')">
+                    <i class="fas fa-home"></i> Zurück zur Startseite
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Erlebnis-Helden. Alle Rechte vorbehalten.</p>
+            <p>Impressum | Datenschutz | AGB | Widerrufsrecht</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Anmelden</h2>
+            <!-- Quick Linda Login Button -->
+<div style="margin-bottom: 2rem;">
+    <button class="btn btn-primary" style="width: 100%; padding: 1rem; background: #28a745;" onclick="quickLogin('Linda')">
+        <i class="fas fa-user"></i> Als Linda anmelden 
+    </button>
+</div>
+            <div class="sso-buttons">
+                <button class="btn btn-google" onclick="ssoLogin('google')">
+                    <i class="fab fa-google"></i> Mit Google anmelden
+                </button>
+                <button class="btn btn-microsoft" onclick="ssoLogin('microsoft')">
+                    <i class="fab fa-microsoft"></i> Mit Microsoft anmelden
+                </button>
+            </div>
+            <div class="divider">
+                <span>oder</span>
+            </div>
+            <form class="login-form" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="email">E-Mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Anmelden
+                </button>
+            </form>
+        </div>
+    </div>
+
+<!-- Register Modal -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('registerModal')">&times;</span>
+        <h2>Registrieren</h2>
+        
+        <!-- Registration Type Selection -->
+        <div class="registration-type">
+            <div class="type-option active" id="privateOption" onclick="selectRegistrationType('private')">
+                <i class="fas fa-user"></i>
+                <h4>Privatkunde</h4>
+                <p>Für Einzelpersonen und Familien</p>
+            </div>
+            <div class="type-option" id="businessOption" onclick="selectRegistrationType('business')">
+                <i class="fas fa-building"></i>
+                <h4>Unternehmen</h4>
+                <p>Für Firmen und Geschäftskunden</p>
+            </div>
+        </div>
+
+        <div class="sso-buttons">
+            <button class="btn btn-google" onclick="ssoRegister('google')">
+                <i class="fab fa-google"></i> Mit Google registrieren
+            </button>
+            <button class="btn btn-microsoft" onclick="ssoRegister('microsoft')">
+                <i class="fab fa-microsoft"></i> Mit Microsoft registrieren
+            </button>
+        </div>
+        <div class="divider">
+            <span>oder</span>
+        </div>
+        <form class="login-form" id="registerForm" onsubmit="register(event)">
+            <div class="form-group">
+                <label for="regName">Name:</label>
+                <input type="text" id="regName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">E-Mail:</label>
+                <input type="email" id="regEmail" name="email" required>
+            </div>
+            
+            <!-- Company fields (hidden by default) -->
+            <div class="company-fields" id="companyFields">
+                <div class="form-group">
+                    <label for="companyName">Firmenname:</label>
+                    <input type="text" id="companyName" name="companyName">
+                </div>
+                <div class="form-group">
+                    <label for="taxId">Steuernummer/USt-IdNr.:</label>
+                    <input type="text" id="taxId" name="taxId">
+                </div>
+                <div class="form-group">
+                    <label for="industry">Branche:</label>
+                    <select id="industry" name="industry">
+                        <option value="">Branche wählen</option>
+                        <option value="technology">Technologie</option>
+                        <option value="healthcare">Gesundheitswesen</option>
+                        <option value="finance">Finanzwesen</option>
+                        <option value="education">Bildung</option>
+                        <option value="retail">Einzelhandel</option>
+                        <option value="manufacturing">Produktion</option>
+                        <option value="consulting">Beratung</option>
+                        <option value="other">Sonstige</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="regPassword">Passwort:</label>
+                <input type="password" id="regPassword" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i class="fas fa-user-plus"></i> <span id="registerBtnText">Registrieren</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Support Modal -->
+    <div id="supportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('supportModal')">&times;</span>
+            <h2>Support kontaktieren</h2>
+            <form class="login-form" onsubmit="sendSupportMessage(event)">
+                <div class="form-group">
+                    <label for="supportName">Name:</label>
+                    <input type="text" id="supportName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="supportEmail">E-Mail:</label>
+                    <input type="email" id="supportEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="supportSubject">Betreff:</label>
+                    <input type="text" id="supportSubject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="supportMessage">Nachricht:</label>
+                    <textarea id="supportMessage" name="message" rows="5" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 5px; font-family: inherit;" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> Nachricht senden
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Product data - EXKLUSIVE BALLONFAHRT ENTFERNT
+        const products = {
+            'sunrise-balloon': {
+                title: 'Romantische Ballonfahrt zum Sonnenaufgang',
+                price: 249,
+                duration: '3-4 Stunden',
+                maxParticipants: 12,
+                minAge: 6,
+                description: 'Erlebe den magischen Moment des Sonnenaufgangs aus luftiger Höhe...',
+                imageClass: 'sunrise-detail',
+                features: [
+                    '3-4 Stunden Gesamterlebnis',
+                    '1 Stunde Ballonfahrt',
+                    'Sektempfang nach der Landung',
+                    'Teilnehmerurkunde',
+                    'Erfahrener Ballonpilot'
+                ],
+                included: [
+                    'Heißluftballonfahrt (ca. 1 Stunde)',
+                    'Professioneller Ballonpilot',
+                    'Sektempfang nach der Landung',
+                    'Teilnehmerurkunde',
+                    'Vollversicherung',
+                    'Wettergarantie mit Ersatztermin'
+                ],
+                bestFor: 'Romantiker und Paare',
+                difficulty: 'Einfach',
+                region: 'Bayern',
+                season: 'April - Oktober'
+            },
+            'dj-balloon': {
+                title: 'DJ-Ballonfahrt München',
+                price: 299,
+                duration: '4 Stunden',
+                maxParticipants: 10,
+                minAge: 16,
+                description: 'Einzigartig in Deutschland! Ballonfahrt mit Live-DJ an Bord...',
+                imageClass: 'dj-balloon-detail',
+                features: [
+                    'Live-DJ mit cooler Playlist',
+                    'Party-Atmosphäre in luftiger Höhe',
+                    'Spezielle DJ-Cocktails',
+                    'Instagram-taugliche Momente',
+                    'Perfekt für Gruppen'
+                ],
+                included: [
+                    'Heißluftballonfahrt mit DJ',
+                    'Live-DJ und Sound-System',
+                    'DJ-Cocktails und Getränke',
+                    'Party-Atmosphäre',
+                    'Spezielle Lichteffekte',
+                    'Foto-Shooting Service'
+                ],
+                bestFor: 'Junge Leute und Party-Fans',
+                difficulty: 'Einfach',
+                region: 'München und Umgebung',
+                season: 'März - Oktober'
+            },
+            'alpine-balloon': {
+                title: 'Abenteuer-Ballonfahrt über die Alpen',
+                price: 329,
+                duration: '5-6 Stunden',
+                maxParticipants: 8,
+                minAge: 10,
+                description: 'Spektakuläre Aussichten auf schneebedeckte Gipfel...',
+                imageClass: 'alpine-detail',
+                features: [
+                    'Fahrt über das Alpenvorland',
+                    'Atemberaubende Bergpanoramen',
+                    'Wettergarantie mit Ersatztermin',
+                    'Heißgetränke an Bord',
+                    'Zertifizierter Bergballonpilot'
+                ],
+                included: [
+                    'Alpine Heißluftballonfahrt',
+                    'Bergpilot mit Speziallizenz',
+                    'Heißgetränke an Bord',
+                    'Warme Decken',
+                    'Sicherheitsausrüstung',
+                    'Wettergarantie'
+                ],
+                bestFor: 'Abenteurer und Naturliebhaber',
+                difficulty: 'Mittel',
+                region: 'Alpenvorland',
+                season: 'Mai - September'
+            }
+        };
+
+        let currentQuantity = 1;
+        let currentProductPrice = 249;
+        let currentProductId = null;
+        let chatbotOpen = false;
+        // User data
+let currentUser = null;
+let registrationType = 'private';
+
+// Cart functionality
+let cart = [];
+let cartDiscountApplied = false;
+let cartDiscountPercentage = 0;
+
+        // Erweiterte Chatbot-Funktionalität
+        function toggleChatbot() {
+            const window = document.getElementById('chatbot-window');
+            const icon = document.getElementById('chatbot-icon');
+            
+            chatbotOpen = !chatbotOpen;
+            
+            if (chatbotOpen) {
+                window.classList.add('open');
+                icon.className = 'fas fa-times';
+                
+                // Only show chatbot on product detail page
+                if (document.getElementById('productDetail').classList.contains('active')) {
+                    // Add welcome message with current product context
+                    setTimeout(() => {
+                        if (currentProductId) {
+                            const product = products[currentProductId];
+                            addBotMessage(`Ich sehe, Sie interessieren sich für "${product.title}". Gerne kann ich Ihnen mehr Details dazu geben oder mit anderen Erlebnissen vergleichen. Was möchten Sie wissen?`);
+                        }
+                    }, 500);
+                }
+            } else {
+                window.classList.remove('open');
+                icon.className = 'fas fa-comments';
+            }
+        }
+
+        // Gutschein-Funktionalität
+let discountApplied = false;
+let discountPercentage = 0;
+
+function applyVoucher() {
+    const voucherCode = document.getElementById('voucher-code').value.trim().toLowerCase();
+    const messageDiv = document.getElementById('discount-message');
+    
+    if (voucherCode === 'abheben15') {
+        if (!discountApplied) {
+            discountApplied = true;
+            discountPercentage = 15;
+            messageDiv.innerHTML = '<div class="discount-applied"><i class="fas fa-check-circle"></i> 15% Rabatt angewendet!</div>';
+            updateTotalPrice();
+        } else {
+            messageDiv.innerHTML = '<div style="color: #ff9800;">Gutschein bereits eingelöst!</div>';
+        }
+    } else {
+        messageDiv.innerHTML = '<div style="color: #f44336;">Ungültiger Gutscheincode</div>';
+        discountApplied = false;
+        discountPercentage = 0;
+        updateTotalPrice();
+    }
+}
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('chatbot-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addUserMessage(message);
+            input.value = '';
+            
+            // Show typing indicator
+            showTyping();
+            
+            // Simulate bot response delay
+            setTimeout(() => {
+                hideTyping();
+                handleBotResponse(message);
+            }, 1000 + Math.random() * 1000);
+        }
+
+        // Message formatting function - NACH den bestehenden Funktionen hinzufügen
+function formatBotMessage(message) {
+    // Ersetze **text** mit <strong>text</strong>
+    message = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Ersetze *text* mit <span class="highlight">text</span>
+    message = message.replace(/\*(.*?)\*/g, '<span class="highlight">$1</span>');
+    
+    // Verbessere Emoji-Darstellung
+    message = message.replace(/([🎈🎵🏔️💕👫⭐☀️🌤️✅💰📅📞💡🩺⏰👟🧥🌡️🎯🛡️📋👶🧒📏🌅🎧🌟💡])/g, '<span class="emoji">$1</span>');
+    
+    return message;
+}
+
+        function askQuickQuestion(question) {
+            addUserMessage(question);
+            
+            showTyping();
+            setTimeout(() => {
+                hideTyping();
+                handleBotResponse(question);
+            }, 800);
+        }
+
+        function addUserMessage(message) {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">👤</div>
+                <div class="message-content">${message}</div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function addBotMessage(message) {
+    const messagesContainer = document.getElementById('chatbot-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    
+    // Formatiere die Nachricht
+    const formattedMessage = formatBotMessage(message);
+    
+    messageDiv.innerHTML = `
+        <div class="message-avatar">🎈</div>
+        <div class="message-content">${formattedMessage}</div>
+    `;
+    messagesContainer.appendChild(messageDiv);
+    scrollToBottom();
+}
+
+        function showTyping() {
+            document.getElementById('typing-indicator').classList.add('show');
+            scrollToBottom();
+        }
+
+        function hideTyping() {
+            document.getElementById('typing-indicator').classList.remove('show');
+        }
+
+        function scrollToBottom() {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // ERWEITERTE CHATBOT RESPONSE FUNKTION - AKTUALISIERT FÜR 3 PRODUKTE
+        function handleBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            let response = '';
+
+            // Spezifische Fragen basierend auf der gewünschten Konversation
+            if (message.includes('unter 400') || message.includes('günstiger') || message.includes('billiger')) {
+                response = generateBudgetResponse();
+            }
+            else if (message.includes('münchen') || message.includes('munich')) {
+                response = generateMunichResponse();
+            }
+            else if (message.includes('vergleich') && (message.includes('2') || message.includes('zwei') || message.includes('beide'))) {
+                response = generateSpecificComparisonResponse();
+            }
+            else if (message.includes('zu zweit') || message.includes('für zwei') || message.includes('2 personen')) {
+                response = generateCoupleResponse();
+            }
+            else if (message.includes('wie hoch') || message.includes('höhe') || message.includes('höhenkrankheit')) {
+                response = generateHeightResponse();
+            }
+            else if (message.includes('wie lange') || message.includes('dauer') || message.includes('zeit')) {
+                response = generateDurationDetailResponse();
+            }
+            else if (message.includes('ausrüstung') || message.includes('anziehen') || message.includes('kleidung')) {
+                response = generateEquipmentResponse();
+            }
+            else if (message.includes('wetter') && message.includes('samstag')) {
+                response = generateWeatherSaturdayResponse();
+            }
+            else if (message.includes('dj') || message.includes('musik') || message.includes('party')) {
+                response = generateDJBalloonResponse();
+            }
+            // Bestehende Funktionen bleiben erhalten
+            else if (message.includes('vergleich') || message.includes('unterschied') || message.includes('compare')) {
+                response = generateComparisonResponse();
+            }
+            else if (message.includes('preis') || message.includes('kosten') || message.includes('price')) {
+                response = generatePriceResponse();
+            }
+            else if (message.includes('enthalten') || message.includes('inklusive') || message.includes('included')) {
+                response = generateIncludedResponse();
+            }
+            else if (message.includes('empfehl') || message.includes('am besten') || message.includes('anfänger') || message.includes('recommend')) {
+                response = generateRecommendationResponse(message);
+            }
+            else if (message.includes('wetter') || message.includes('weather') || message.includes('wind')) {
+                response = generateWeatherResponse();
+            }
+            else if (message.includes('sicher') || message.includes('safety') || message.includes('gefahr')) {
+                response = generateSafetyResponse();
+            }
+            else if (message.includes('buch') || message.includes('reserv') || message.includes('booking')) {
+                response = generateBookingResponse();
+            }
+            else if (message.includes('alter') || message.includes('kind') || message.includes('age')) {
+                response = generateAgeResponse();
+            }
+            else if (message.includes('wo') || message.includes('ort') || message.includes('location')) {
+                response = generateLocationResponse();
+            }
+            else if (message.includes('hallo') || message.includes('hi') || message.includes('guten')) {
+                response = "Hallo! Schön, dass Sie da sind. Ich helfe Ihnen gerne bei allen Fragen zu unseren Heißluftballon-Erlebnissen. Was möchten Sie wissen?";
+            }
+            else {
+                response = generateDefaultResponse(message);
+            }
+
+            addBotMessage(response);
+        }
+
+        // NEUE DJ-BALLONFAHRT RESPONSE-FUNKTION
+        function generateDJBalloonResponse() {
+            return `Ja, unsere DJ-Ballonfahrt ist ein absolutes Highlight! 🎵🎈
+
+🎧 **DJ-Ballonfahrt München (299€):**
+• **Live-DJ** an Bord mit coolen Beats
+• **Sound-System** in luftiger Höhe
+• **Spezielle DJ-Cocktails** statt Sekt
+• **Party-Atmosphäre** mit bis zu 10 Personen
+• **Instagram-perfekte** Momente garantiert
+• **Lichteffekte** für extra Stimmung
+
+🌟 **Das macht sie besonders:**
+• Einzigartig in ganz Deutschland!
+• Perfekt für Geburtstage, Junggesellenabschiede
+• Coole Playlist nach Ihren Wünschen
+• Professionelle Fotos vom Foto-Shooting
+
+**Ideal für:** Alle zwischen 16-35 Jahren, die etwas Außergewöhnliches erleben wollen!
+
+<a href="#" class="chatbot-action-btn" onclick="showProductDetail('dj-balloon'); toggleChatbot();">🎵 DJ-Ballonfahrt ansehen</a>
+
+Soll ich mehr über die Musik-Auswahl oder den Ablauf erzählen? `;
+        }
+
+        // AKTUALISIERTE RESPONSE-FUNKTIONEN FÜR 3 PRODUKTE
+        function generateBudgetResponse() {
+            return `Ja, alle unsere Erlebnisse sind unter 400€! 🎈
+
+💰 **Unsere 3 Top-Erlebnisse:**
+• **Romantische Sonnenaufgang-Fahrt: 249€**
+  - Perfekt für Einsteiger
+  - Sektempfang inklusive
+  - 3-4 Stunden Gesamterlebnis
+
+• **DJ-Ballonfahrt München: 299€**
+  - Party-Stimmung mit Live-DJ
+  - Coole Cocktails statt Sekt
+  - 4 Stunden pures Vergnügen
+
+• **Abenteuer-Fahrt über die Alpen: 329€**
+  - Spektakuläre Bergaussicht
+  - Heißgetränke an Bord
+  - Für Naturliebhaber
+
+**Mein Tipp:** Die DJ-Ballonfahrt für 299€ ist der Geheimtipp für alle Party-Fans! 🎵✨
+
+Welche der drei interessiert Sie mehr?`;
+        }
+
+        function generateMunichResponse() {
+            return `Perfekt! Wir haben ein ganz besonderes Erlebnis direkt in München! 🎵
+
+🎈 **DJ-Ballonfahrt München (299€):**
+• **Einzigartig in Deutschland** - Live-DJ an Bord!
+• Start direkt im Münchner Umland
+• Coole Beats während des Flugs 
+• Party-Atmosphäre in luftiger Höhe
+• Spezielle DJ-Cocktails
+• Instagram-perfekte Momente garantiert
+
+Das ist definitiv etwas ganz Besonderes - Ballonfahren meets Partystimmung! Die DJ-Fahrt ist bei jungen Leuten der absolute Renner.
+
+**Besonders beliebt für:**
+• Geburtstage & Junggesellenabschiede
+• Gruppen von Freunden
+• Alle die etwas Außergewöhnliches wollen
+
+Soll ich Ihnen mehr über die Musik-Auswahl oder den Ablauf erzählen? `;
+        }
+
+        function generateSpecificComparisonResponse() {
+            return `Hier ist der detaillierte Vergleich zwischen den beliebtesten Erlebnissen:
+
+<table class="comparison-table" style="margin: 1rem 0;">
+<tr><th>Aspekt</th><th>Sonnenaufgang-Fahrt</th><th>DJ-Ballonfahrt München</th></tr>
+<tr><td><strong>Preis</strong></td><td>249€</td><td>299€</td></tr>
+<tr><td><strong>Dauer</strong></td><td>3-4h</td><td>4h</td></tr>
+<tr><td><strong>Besonderheit</strong></td><td>Romantischer Sonnenaufgang</td><td>Live-DJ & Musik 🎵</td></tr>
+<tr><td><strong>Teilnehmer</strong></td><td>Max. 12</td><td>Max. 10</td></tr>
+<tr><td><strong>Getränke</strong></td><td>Sektempfang</td><td>DJ-Cocktails</td></tr>
+<tr><td><strong>Mindestalter</strong></td><td>6 Jahre</td><td>16 Jahre</td></tr>
+<tr><td><strong>Bewertungen</strong></td><td>4.9/5 ⭐ (187 Reviews)</td><td>4.8/5 ⭐ (93 Reviews)</td></tr>
+</table>
+
+🌟 **DJ-Ballonfahrt Highlights:**
+• Einzigartig in Deutschland
+• Perfekt für junge Leute & Gruppen
+• Instagram-taugliche Momente
+• Coole Musik-Playlist nach Wunsch
+• Party-Stimmung garantiert
+
+**Empfehlung:** Für Romantiker → Sonnenaufgang | Für Party-Fans → DJ-Fahrt`;
+        }
+
+        function generateCoupleResponse() {
+            return `Ja, alle Erlebnisse sind perfekt für Paare geeignet! 💕
+
+👫 **Für Paare - unsere 3 Optionen:**
+
+**Sonnenaufgang-Fahrt (249€ pro Person):**
+• Romantische Morgenstimmung
+• Klassisches Ballon-Erlebnis
+• Sektempfang für beide
+
+**DJ-Ballonfahrt (299€ pro Person):**
+• Partystimmung zu zweit
+• Einzigartiges Musik-Erlebnis
+• Coole Cocktails & tolle Fotos
+
+**Alpen-Fahrt (329€ pro Person):**
+• Spektakuläre Bergaussicht
+• Besonders romantisch bei Sonnenuntergang
+• Heißgetränke bei kühlem Bergwetter
+
+**Welcher Typ seid ihr?** 
+• Romantische Frühaufsteher → Sonnenaufgang
+• Party-Liebhaber → DJ-Fahrt
+• Naturliebhaber → Alpen-Fahrt
+
+Was passt besser zu euch? `;
+        }
+
+        // AKTUALISIERTE WEITERE RESPONSE-FUNKTIONEN FÜR 3 PRODUKTE
+        function generateComparisonResponse() {
+            const comparisonTable = `
+                <div style="margin: 1rem 0;">
+                    <strong>Vergleich unserer Heißluftballon-Erlebnisse:</strong>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Erlebnis</th>
+                            <th>Preis</th>
+                            <th>Teilnehmer</th>
+                            <th>Besonderheit</th>
+                        </tr>
+                        <tr>
+                            <td>Sonnenaufgang</td>
+                            <td>249€</td>
+                            <td>Max. 12</td>
+                            <td>Romantisch</td>
+                        </tr>
+                        <tr>
+                            <td>DJ-Ballonfahrt</td>
+                            <td>299€</td>
+                            <td>Max. 10</td>
+                            <td>Live-DJ & Party</td>
+                        </tr>
+                        <tr>
+                            <td>Alpen</td>
+                            <td>329€</td>
+                            <td>Max. 8</td>
+                            <td>Bergpanorama</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <strong>Meine Empfehlung:</strong><br>
+                • Für Romantiker: Sonnenaufgang-Fahrt<br>
+                • Für Party-Fans: DJ-Ballonfahrt 🎵<br>
+                • Für Abenteurer: Alpen-Fahrt
+            `;
+            
+            return comparisonTable;
+        }
+
+        function generatePriceResponse() {
+            if (currentProductId) {
+                const product = products[currentProductId];
+                return `Die "${product.title}" kostet ${product.price}€ pro Person. 
+                
+Im Vergleich dazu:
+• Sonnenaufgang-Fahrt: 249€
+• DJ-Ballonfahrt: 299€ 🎵
+• Alpen-Fahrt: 329€
+
+Alle Preise verstehen sich inklusive aller Nebenkosten. Es gibt keine versteckten Gebühren!`;
+            }
+            
+            return `Unsere Heißluftballon-Erlebnisse kosten:
+• Romantische Sonnenaufgang-Fahrt: 249€ pro Person
+• DJ-Ballonfahrt München: 299€ pro Person 🎵
+• Abenteuer-Fahrt über die Alpen: 329€ pro Person
+
+Alle Preise sind Endpreise ohne versteckte Kosten!`;
+        }
+
+        // Restliche Funktionen bleiben unverändert...
+        function generateIncludedResponse() {
+            if (currentProductId) {
+                const product = products[currentProductId];
+                return `Bei der "${product.title}" ist folgendes enthalten:
+
+${product.included.map(item => `• ${item}`).join('\n')}
+
+Nicht enthalten sind nur die Anreise zum Startplatz und persönliche Ausgaben.`;
+            }
+            
+            return `Bei allen unseren Ballonfahrten ist standardmäßig enthalten:
+• Die komplette Heißluftballonfahrt
+• Professioneller, zertifizierter Pilot
+• Vollversicherung
+• Wettergarantie mit Ersatztermin
+• Teilnehmerurkunde
+
+Je nach Erlebnis kommen weitere Leistungen wie Sektempfang, DJ-Service oder Transfers dazu.`;
+        }
+
+        function generateRecommendationResponse(message) {
+            if (message.includes('jung') || message.includes('party') || message.includes('gruppe')) {
+                return `Für junge Leute und Party-Fans empfehle ich die "DJ-Ballonfahrt München":
+
+✅ Einzigartig in Deutschland (299€) 🎵
+✅ Live-DJ mit coolen Beats
+✅ Party-Atmosphäre in luftiger Höhe
+✅ Instagram-perfekte Momente
+✅ Spezielle DJ-Cocktails
+
+Sie ist perfekt für Gruppen, Geburtstage oder alle die etwas Außergewöhnliches erleben wollen!`;
+            }
+            
+            if (message.includes('anfänger') || message.includes('erste')) {
+                return `Für Anfänger empfehle ich die "Romantische Ballonfahrt zum Sonnenaufgang":
+
+✅ Sanfter Einstieg (249€)
+✅ Erfahrene Piloten
+✅ Entspannte Atmosphäre
+✅ Optimale Wetterbedingungen am Morgen
+
+Sie ist perfekt für den ersten Ballonflug und bietet ein unvergessliches Erlebnis ohne Überforderung.`;
+            }
+            
+            if (message.includes('romantisch') || message.includes('paar')) {
+                return `Für Paare gibt es drei perfekte Optionen:
+
+💕 **Romantisch & erschwinglich:** Sonnenaufgang-Fahrt (249€)
+🎵 **Modern & einzigartig:** DJ-Ballonfahrt (299€)
+🏔️ **Abenteuerlich & spektakulär:** Alpen-Fahrt (329€)
+
+Welche passt besser zu Ihren Vorstellungen?`;
+            }
+            
+            return `Je nach Ihren Wünschen empfehle ich:
+
+🌅 **Romantik-Liebhaber:** Sonnenaufgang-Fahrt
+🎵 **Party-Fans:** DJ-Ballonfahrt München
+🏔️ **Abenteurer:** Alpen-Fahrt mit Bergpanorama  
+
+Was ist Ihnen am wichtigsten: Preis, Party-Stimmung oder Abenteuer?`;
+        }
+
+        // Weitere bestehende Funktionen bleiben unverändert...
+        function generateWeatherResponse() {
+            return `Heißluftballonfahrten sind stark wetterabhängig:
+
+☀️ **Optimale Bedingungen:**
+• Wenig bis kein Wind (unter 5 m/s)
+• Gute Sicht
+• Keine Gewitter oder starken Regen
+
+🌦️ **Bei schlechtem Wetter:**
+• Kostenlose Verschiebung auf Ersatztermin
+• Wettergarantie bei allen unseren Fahrten
+• Entscheidung wird 2-3 Stunden vorher getroffen
+
+Die beste Flugzeit ist morgens früh oder abends, da dann die Winde meist ruhiger sind.`;
+        }
+
+        function generateSafetyResponse() {
+            return `Sicherheit hat bei uns oberste Priorität:
+
+🛡️ **Sicherheitsmaßnahmen:**
+• Alle Piloten sind zertifiziert und erfahren
+• Regelmäßige Ballonwartung und TÜV-Prüfung
+• Vollversicherung für alle Teilnehmer
+• Notfallausrüstung an Bord
+• Bodencrew zur Unterstützung
+
+📋 **Einschränkungen:**
+• Schwangere können nicht teilnehmen
+• Personen mit Herzproblemen nur nach Rücksprache
+• Maximales Gewicht: 120kg pro Person
+• DJ-Ballonfahrt: Mindestalter 16 Jahre
+
+Ballonfahren ist statistisch eine der sichersten Luftsportarten!`;
+        }
+
+        function generateBookingResponse() {
+            return `Die Buchung ist ganz einfach:
+
+📅 **Online buchen:**
+1. Wunschtermin und Personenzahl wählen
+2. Persönliche Daten eingeben
+3. Bezahlung per Kreditkarte oder PayPal
+4. Sofortige Buchungsbestätigung per E-Mail
+
+📞 **Oder persönlich:**
+• Telefon: +49 89 123-4567
+• E-Mail: info@erlebnis-helden.de
+
+💡 **Tipp:** Buchen Sie frühzeitig, besonders für:
+• Wochenenden und Hauptsaison (Mai-September)
+• DJ-Ballonfahrt (sehr beliebt bei jungen Leuten!)
+
+Soll ich Ihnen dabei helfen, das passende Erlebnis zu finden?`;
+        }
+
+        function generateAgeResponse() {
+            return `Die Altersanforderungen unterscheiden sich:
+
+👶 **Sonnenaufgang-Fahrt:** Ab 6 Jahren (mit Erwachsenen)
+🎵 **DJ-Ballonfahrt:** Ab 16 Jahren (wegen Party-Charakter)
+🧒 **Alpen-Fahrt:** Ab 10 Jahren
+
+**Wichtig für Kinder/Jugendliche:**
+• Immer in Begleitung Erwachsener
+• Müssen die gesamte Flugzeit stehen können
+• Keine Angst vor Höhen haben
+• Bei starkem Wind können Kinder nicht mitfliegen
+
+**Senioren:** Keine Altersobergrenze, solange sie gesund und mobil sind.`;
+        }
+
+        function generateLocationResponse() {
+            return `Unsere Ballonfahrten starten von verschiedenen Standorten:
+
+🌅 **Sonnenaufgang-Fahrt:** 
+• Region Bayern, nähe München
+• Genauer Startplatz wird je nach Wind gewählt
+
+🎵 **DJ-Ballonfahrt:**
+• München und direktes Umland
+• Start meist im Süden Münchens
+
+🏔️ **Alpen-Fahrt:**
+• Alpenvorland zwischen München und den Bergen
+• Spektakuläre Bergkulisse garantiert
+
+Der genaue Startplatz wird immer 1-2 Tage vorher mitgeteilt, da er vom Wetter abhängt. Alle Startplätze sind gut mit dem Auto erreichbar.`;
+        }
+
+        function generateHeightResponse() {
+            return `Gute Frage wegen der Höhenkrankheit! 🏔️
+
+📏 **Flughöhen:**
+• **Maximum: 2.000 Meter** (bei perfekten Bedingungen)
+• **Normal: 500-1.200 Meter** (Standardflughöhe)
+• **Minimum: 300 Meter** (bei Wind oder schlechter Sicht)
+
+💡 **Wichtig für Sie:**
+• Höhenkrankheit tritt meist erst ab 2.500m auf
+• Unsere maximale Flughöhe liegt darunter
+• Der Aufstieg ist sehr sanft und langsam
+• Sie können jederzeit mit dem Piloten sprechen
+• Notlandung jederzeit möglich
+
+🩺 **Bei Bedenken:**
+• Sprechen Sie vorher mit Ihrem Arzt
+• Teilen Sie dem Piloten Ihre Sorgen mit
+• Wir fliegen dann bewusst niedriger (500-800m)
+
+Die allermeisten Gäste haben keinerlei Probleme! Bei der DJ-Ballonfahrt lenkt die Musik sogar super ab 
+
+Beruhigt Sie das?`;
+        }
+
+        function generateDurationDetailResponse() {
+            return `Hier sind die genauen Zeiten für Ihre Planung:
+
+⏰ **Gesamtzeit der verschiedenen Erlebnisse:**
+
+🌅 **Sonnenaufgang-Fahrt (3-4h):**
+• 30 Min: Ankunft & Begrüßung
+• 45 Min: Ballon-Aufbau & Vorbereitung  
+• 60 Min: Reine Flugzeit ✈️
+• 45 Min: Sektempfang & Urkunden-Übergabe
+
+🎵 **DJ-Ballonfahrt (4h):**
+• 30 Min: Ankunft & DJ-Setup
+• 60 Min: Ballon-Aufbau mit Musik
+• 60 Min: Flug mit Live-DJ
+• 50 Min: Landing-Party & Cocktails
+
+🏔️ **Alpen-Fahrt (5-6h):**
+• Längere Anfahrt zu den Bergen
+• Ausgiebigere Nachbesprechung
+
+**Tipp:** Planen Sie lieber 30 Min extra ein - so haben Sie keinen Stress! 😌`;
+        }
+
+        function generateEquipmentResponse() {
+            return `Hier ist die komplette Ausrüstungs-Liste: 👕
+
+👟 **Schuhe (WICHTIG!):**
+• **Festes, flaches Schuhwerk**
+• Turnschuhe oder Wanderschuhe ✅
+• KEINE High Heels oder Sandalen ❌
+• Rutschfeste Sohle empfohlen
+
+🧥 **Kleidung:**
+• **Sportliche, dem Wetter entsprechende Kleidung**
+• Schichten-Prinzip (wird oben kühler!)
+• Windjacke oder leichte Jacke
+• Lange Hose empfohlen
+
+🎵 **Speziell für DJ-Ballonfahrt:**
+• **Cooles Outfit** für Instagram-Fotos
+• Sonnenbrille für den Look
+• Handy für Videos (gut festhalten!)
+
+🌡️ **Je nach Jahreszeit:**
+• **Frühling/Herbst:** Warme Jacke, Handschuhe
+• **Sommer:** Leichte Jacke reicht
+• **Generell:** 10°C kühler als am Boden!
+
+**Keine Sorge:** Unser Team gibt Ihnen vorher nochmal alle Details! `;
+        }
+
+        function generateWeatherSaturdayResponse() {
+            return `Perfekte Nachrichten für Samstag! ☀️
+
+🌤️ **Wetter-Prognose Samstag:**
+• **24°C** - optimal für Ballonfahrt!
+• **Windstill** - ideale Flugbedingungen! 🎈
+• Sonnenschein erwartet
+• Keine Gewittergefahr
+
+✅ **Das bedeutet:**
+• **SUPER WETTER** für Ihre Ballonfahrt!
+• Perfekte Sicht auf die Landschaft
+• Angenehme Temperaturen (oben ca. 14°C)
+• Sehr wahrscheinlich kein Ersatztermin nötig
+
+🎯 **Meine Empfehlung:**
+Buchen Sie schnell - bei so perfektem Wetter sind die Plätze sehr begehrt!
+
+**Aktuelle Verfügbarkeit Samstag:**
+• 05:30 Uhr (Sonnenaufgang): ✅ 3 Plätze frei
+• 10:00 Uhr (DJ-Ballonfahrt): ✅ 6 Plätze frei  
+• 18:00 Uhr (Abend): ✅ 5 Plätze frei
+
+Welche Zeit würde Ihnen am besten passen? `;
+        }
+
+        function generateDefaultResponse(message) {
+            const responses = [
+                "Das ist eine interessante Frage! Können Sie mir mehr Details dazu geben, damit ich Ihnen besser helfen kann?",
+                "Gerne helfe ich Ihnen weiter. Bezieht sich Ihre Frage auf ein bestimmtes Ballon-Erlebnis oder allgemein?",
+                "Ich bin nicht sicher, ob ich Sie richtig verstanden habe. Möchten Sie mehr über Preise, Buchung oder die Erlebnisse selbst erfahren?",
+                "Entschuldigung, können Sie Ihre Frage anders formulieren? Ich helfe gerne bei allem rund um unsere Heißluftballon-Fahrten, inklusive unserer beliebten DJ-Ballonfahrt! 🎵"
+            ];
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        // Change main image function
+        function changeMainImage(imageUrl) {
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.style.backgroundImage = `url('${imageUrl}')`;
+        }
+
+// Registration type selection
+function selectRegistrationType(type) {
+    registrationType = type;
+    
+    // Update UI
+    document.getElementById('privateOption').classList.remove('active');
+    document.getElementById('businessOption').classList.remove('active');
+    document.getElementById(type + 'Option').classList.add('active');
+    
+    // Show/hide company fields
+    const companyFields = document.getElementById('companyFields');
+    const registerBtn = document.getElementById('registerBtnText');
+    
+    if (type === 'business') {
+        companyFields.classList.add('show');
+        registerBtn.textContent = 'Unternehmen registrieren';
+        // Make company fields required
+        document.getElementById('companyName').required = true;
+        document.getElementById('taxId').required = true;
+        document.getElementById('industry').required = true;
+    } else {
+        companyFields.classList.remove('show');
+        registerBtn.textContent = 'Registrieren';
+        // Remove required from company fields
+        document.getElementById('companyName').required = false;
+        document.getElementById('taxId').required = false;
+        document.getElementById('industry').required = false;
+    }
+}
+
+// Quick login for Linda (Demo)
+function quickLogin(name) {
+    const user = {
+        name: name,
+        email: name.toLowerCase() + '@erlebnis-helden.de',
+        type: 'private',
+        avatar: 'https://sap-my.sharepoint.com/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%c3%bcnchen%202025/Bilder%20Storefront/Linda%201.png?Web=1'
+    };
+    
+    loginUser(user);
+    closeModal('loginModal');
+
+    if (name === 'Linda') {
+        showWelcomePopup();
+    }
+}
+
+function showWelcomePopup() {
+    setTimeout(() => {
+        document.getElementById('welcomePopup').style.display = 'block';
+    }, 2000);
+}
+
+function closeWelcomePopup() {
+    document.getElementById('welcomePopup').style.display = 'none';
+}
+
+// User login function (ERSETZEN Sie die bestehende Funktion)
+function loginUser(user) {
+    currentUser = user;
+    updateHeaderForLoggedInUser();
+    updateHeroSection(); // Neue Funktion hinzufügen
+    showWelcomeMessage(`Willkommen zurück, ${user.name}!`);
+}
+
+// Update Hero Section based on user
+function updateHeroSection() {
+    const heroSection = document.getElementById('heroSection');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    
+    if (!currentUser) {
+        // Default hero for non-logged-in users
+        heroSection.className = 'hero';
+        heroTitle.textContent = 'Unvergessliche Abenteuer erleben';
+        heroSubtitle.textContent = 'Entdecke außergewöhnliche Erlebnisse und werde zum Helden Deiner eigenen Geschichte';
+        return;
+    }
+    
+    if (currentUser.name === 'Linda') {
+        // Special hero for Linda
+        heroSection.className = 'hero linda-logged-in';
+        heroTitle.textContent = `Willkommen zurück, ${currentUser.name}!`;
+        heroSubtitle.textContent = 'Deine personalisierten Abenteuer warten auf dich. Entdecke neue Erlebnisse basierend auf deinen Vorlieben.';
+        heroSection.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://sap-my.sharepoint.com/:i:/r/personal/yannik_bart_sap_com/Documents/CX%20Presales/Kunden/Innovation%20Day%20CX%20M%C3%BCnchen%202025/Bilder%20Storefront/AdobeStock_365899176.jpeg?csf=1&web=1&e=EviGwX')";
+    } else if (currentUser.type === 'business') {
+        // Hero for business users
+        heroSection.className = 'hero business-logged-in';
+        heroTitle.textContent = `Willkommen, ${currentUser.name}`;
+        heroSubtitle.textContent = 'Firmen-Erlebnisse und Team-Events für unvergessliche Geschäftsmomente';
+    } else {
+        // Hero for other private users
+        heroSection.className = 'hero linda-logged-in'; // You can create a separate class if needed
+        heroTitle.textContent = `Hallo ${currentUser.name}!`;
+        heroSubtitle.textContent = 'Deine personalisierten Abenteuer warten auf dich';
+    }
+}
+
+// Toggle profile dropdown
+function toggleProfileDropdown() {
+    const dropdown = document.getElementById('profileDropdown');
+    dropdown.classList.toggle('show');
+}
+
+// Profile functions (placeholder)
+function showProfile() {
+    alert('Profil-Seite wird geladen...');
+    document.getElementById('profileDropdown').classList.remove('show');
+}
+
+function showBookings() {
+    alert('Buchungsübersicht wird geladen...');
+    document.getElementById('profileDropdown').classList.remove('show');
+}
+
+function showFavorites() {
+    alert('Favoriten werden geladen...');
+    document.getElementById('profileDropdown').classList.remove('show');
+}
+
+function showCompanyDashboard() {
+    alert('Firmen-Dashboard wird geladen...');
+    document.getElementById('profileDropdown').classList.remove('show');
+}
+
+function showSettings() {
+    alert('Einstellungen werden geladen...');
+    document.getElementById('profileDropdown').classList.remove('show');
+}
+
+
+        // Page navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close chatbot when leaving product page
+            if (pageId !== 'productDetail' && chatbotOpen) {
+                toggleChatbot();
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Show product detail
+        function showProductDetail(productId) {
+            const product = products[productId];
+            if (!product) return;
+
+            currentProductId = productId;
+
+            // Update product information
+            document.getElementById('detail-product-title').textContent = product.title;
+            document.getElementById('detail-product-price').textContent = product.price + '€';
+            document.getElementById('breadcrumb-product').textContent = product.title;
+            
+            // Update main image class
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.className = 'main-image ' + product.imageClass;
+            
+            currentProductPrice = product.price;
+            currentQuantity = 1;
+            document.getElementById('quantity').textContent = currentQuantity;
+            updateTotalPrice();
+
+            showPage('productDetail');
+        }
+
+        // Tab functionality
+        function showTab(tabId) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Quantity functions
+        function changeQuantity(change) {
+            currentQuantity = Math.max(1, currentQuantity + change);
+            document.getElementById('quantity').textContent = currentQuantity;
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+    let total = currentQuantity * currentProductPrice;
+    
+    // Rabatt anwenden
+    if (discountApplied) {
+        const discount = total * (discountPercentage / 100);
+        total = total - discount;
+        document.getElementById('total-price').innerHTML = 
+            `<span style="text-decoration: line-through; color: #999; font-size: 0.8em;">${(currentQuantity * currentProductPrice)}€</span><br>${Math.round(total)}€`;
+    } else {
+        document.getElementById('total-price').textContent = total + '€';
+    }
+}
+
+        // Booking function - ERSETZEN Sie die bestehende bookNow Funktion
+function bookNow() {
+    const date = document.getElementById('booking-date').value;
+    const time = document.getElementById('booking-time').value;
+    const title = document.getElementById('detail-product-title').textContent;
+
+    if (!date) {
+        alert('Bitte wählen Sie einen Termin aus.');
+        return;
+    }
+
+    // Add to cart
+    const cartItem = {
+        id: currentProductId,
+        title: title,
+        price: currentProductPrice,
+        quantity: currentQuantity,
+        date: date,
+        time: time,
+        discount: discountApplied ? discountPercentage : 0,
+        product: products[currentProductId]
+    };
+
+    cart.push(cartItem);
+    showCartPage();
+}
+
+// Cart functions
+function showCartPage() {
+    updateCartDisplay();
+    showPage('cartPage');
+}
+
+function updateCartDisplay() {
+    const container = document.getElementById('cart-items-container');
+    const cartCount = document.getElementById('cart-count');
+    
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Ihr Warenkorb ist leer</h3>
+                <p>Entdecken Sie unsere fantastischen Erlebnisse!</p>
+            </div>
+        `;
+        cartCount.textContent = '0 Artikel';
+        return;
+    }
+    
+    cartCount.textContent = `${cart.length} Artikel`;
+    
+    container.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+            <div class="cart-item-image ${item.product.imageClass}"></div>
+            <div class="cart-item-details">
+                <h3>${item.title}</h3>
+                <div class="cart-item-meta">
+                    <i class="fas fa-calendar"></i> ${formatDate(item.date)} - ${getTimeText(item.time)}
+                </div>
+                <ul class="cart-item-features">
+                    ${item.product.features.slice(0, 3).map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+            </div>
+            <div class="cart-item-controls">
+                <div class="cart-quantity">
+                    <button class="cart-quantity-btn" onclick="updateCartQuantity(${index}, -1)">-</button>
+                    <span class="cart-quantity-display">${item.quantity}</span>
+                    <button class="cart-quantity-btn" onclick="updateCartQuantity(${index}, 1)">+</button>
+                </div>
+                <div class="cart-item-price">${calculateItemPrice(item)}€</div>
+                <button class="cart-remove" onclick="removeFromCart(${index})">
+                    <i class="fas fa-trash"></i> Entfernen
+                </button>
+            </div>
+        </div>
+    `).join('');
+    
+    updateCartSummary();
+}
+
+function updateCartQuantity(index, change) {
+    cart[index].quantity = Math.max(1, cart[index].quantity + change);
+    updateCartDisplay();
+}
+
+function removeFromCart(index) {
+    if (confirm('Möchten Sie diesen Artikel wirklich entfernen?')) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+}
+
+function calculateItemPrice(item) {
+    let total = item.price * item.quantity;
+    if (item.discount > 0) {
+        total = total - (total * (item.discount / 100));
+    }
+    return Math.round(total);
+}
+
+function updateCartSummary() {
+    let subtotal = 0;
+    let totalDiscount = 0;
+    
+    cart.forEach(item => {
+        const itemSubtotal = item.price * item.quantity;
+        subtotal += itemSubtotal;
+        
+        if (item.discount > 0) {
+            totalDiscount += itemSubtotal * (item.discount / 100);
+        }
+    });
+    
+    // Apply cart-wide discount if applicable
+    if (cartDiscountApplied) {
+        totalDiscount += subtotal * (cartDiscountPercentage / 100);
+    }
+    
+    const total = subtotal - totalDiscount;
+    
+    document.getElementById('cart-subtotal').textContent = subtotal + '€';
+    document.getElementById('cart-total').textContent = Math.round(total) + '€';
+    
+    if (totalDiscount > 0) {
+        document.getElementById('discount-row').style.display = 'flex';
+        document.getElementById('cart-discount').textContent = '-' + Math.round(totalDiscount) + '€';
+    } else {
+        document.getElementById('discount-row').style.display = 'none';
+    }
+}
+
+function applyCartVoucher() {
+    const voucherCode = document.getElementById('cart-voucher-code').value.trim().toLowerCase();
+    const messageDiv = document.getElementById('cart-discount-message');
+    
+    if (voucherCode === 'abheben15') {
+        if (!cartDiscountApplied) {
+            cartDiscountApplied = true;
+            cartDiscountPercentage = 15;
+            messageDiv.innerHTML = '<div class="discount-applied"><i class="fas fa-check-circle"></i> 15% Rabatt angewendet!</div>';
+            updateCartSummary();
+        } else {
+            messageDiv.innerHTML = '<div style="color: #ff9800;">Gutschein bereits eingelöst!</div>';
+        }
+    } else {
+        messageDiv.innerHTML = '<div style="color: #f44336;">Ungültiger Gutscheincode</div>';
+        cartDiscountApplied = false;
+        cartDiscountPercentage = 0;
+        updateCartSummary();
+    }
+}
+
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        alert('Ihr Warenkorb ist leer!');
+        return;
+    }
+    
+    const total = document.getElementById('cart-total').textContent;
+    alert(`Weiterleitung zur Kasse...\n\nGesamtsumme: ${total}\n\nSie werden zur sicheren Bezahlung weitergeleitet.`);
+}
+
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        alert('Ihr Warenkorb ist leer!');
+        return;
+    }
+    
+    // Show order success page
+    showOrderSuccess();
+}
+function showOrderSuccess() {
+    // Populate order summary
+    const orderItems = document.getElementById('order-items');
+    const orderTotal = document.getElementById('order-final-total');
+    
+    // Calculate subtotal
+    let subtotal = 0;
+    cart.forEach(item => {
+        subtotal += calculateItemPrice(item);
+    });
+    
+    // Build items HTML
+    let orderHTML = cart.map(item => `
+        <div class="order-item">
+            <span>${item.title} (${item.quantity}x)</span>
+            <span>${calculateItemPrice(item)}€</span>
+        </div>
+    `).join('');
+    
+    let finalTotal = subtotal;
+    
+// Check if cart discount was applied
+if (cartDiscountApplied) {
+    const discountAmount = Math.round(subtotal * (cartDiscountPercentage / 100));
+    finalTotal = subtotal - discountAmount;
+    
+    orderHTML += `
+        <div class="order-item">
+            <span>Zwischensumme</span>
+            <span>${subtotal}€</span>
+        </div>
+        <div class="order-item" style="color: #4caf50;">
+            <span>Rabatt (abheben15) -15%</span>
+            <span>-${discountAmount}€</span>
+        </div>
+    `;
+} else {
+    // Check if individual item discounts exist
+    let hasItemDiscount = cart.some(item => item.discount > 0);
+    if (hasItemDiscount) {
+        const originalSubtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const discountAmount = originalSubtotal - subtotal;
+        
+        orderHTML += `
+            <div class="order-item">
+                <span>Zwischensumme</span>
+                <span>${originalSubtotal}€</span>
+            </div>
+            <div class="order-item" style="color: #4caf50;">
+                <span>Rabatt (abheben15) -15%</span>
+                <span>-${Math.round(discountAmount)}€</span>
+            </div>
+        `;
+    }
+}
+    
+    orderItems.innerHTML = orderHTML;
+    orderTotal.textContent = finalTotal + '€';
+    
+    // Clear cart and show success page
+    cart = [];
+    showPage('orderSuccessPage');
+}
+
+function downloadPDF() {
+    alert('PDF wird heruntergeladen...\n\nIhre Tickets werden als PDF-Datei gespeichert.');
+}
+
+function sendEmail() {
+    const email = currentUser ? currentUser.email : 'ihre-email@example.com';
+    alert(`Tickets werden per E-Mail gesendet an:\n${email}\n\nSie erhalten eine Bestätigung in wenigen Minuten.`);
+}
+
+function addToWalletSuccess() {
+    if (confirm('Möchten Sie Ihre Tickets zu Apple Wallet / Google Pay hinzufügen?')) {
+        showWalletSuccess();
+    }
+}
+
+function addToWallet() {
+    if (cart.length === 0) {
+        alert('Bitte fügen Sie erst Artikel zu Ihrem Warenkorb hinzu.');
+        return;
+    }
+    
+    // Simulate wallet integration
+    if (confirm('Möchten Sie Ihre Tickets zu Apple Wallet / Google Pay hinzufügen?\n\nSie erhalten eine Push-Benachrichtigung sobald die Buchung bestätigt wurde.')) {
+        // Here would be the actual wallet integration
+        showWalletSuccess();
+    }
+}
+
+function showWalletSuccess() {
+    const banner = document.createElement('div');
+    banner.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        z-index: 1001;
+        animation: slideDown 0.3s ease-out;
+    `;
+    banner.innerHTML = `
+        <i class="fas fa-wallet"></i> Ticket erfolgreich zu Ihrer Wallet hinzugefügt!
+        <br><small>Sie erhalten eine Benachrichtigung nach der Buchungsbestätigung.</small>
+    `;
+    
+    document.body.appendChild(banner);
+    
+    setTimeout(() => {
+        if (banner.parentNode) {
+            banner.parentNode.removeChild(banner);
+        }
+    }, 4000);
+}
+
+// Helper functions
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+}
+
+function getTimeText(timeValue) {
+    const times = {
+        'sunrise': 'Sonnenaufgang (05:30)',
+        'morning': 'Vormittag (09:00)',
+        'evening': 'Abend (18:00)'
+    };
+    return times[timeValue] || timeValue;
+}
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // SSO Login functions
+        function ssoLogin(provider) {
+            alert(`SSO Anmeldung mit ${provider} wird implementiert...`);
+            closeModal('loginModal');
+            showWelcomeMessage(`Erfolgreich mit ${provider} angemeldet!`);
+        }
+
+        function ssoRegister(provider) {
+            alert(`SSO Registrierung mit ${provider} wird implementiert...`);
+            closeModal('registerModal');
+            showWelcomeMessage(`Erfolgreich mit ${provider} registriert!`);
+        }
+
+        // Regular login
+        function login(event) {
+    event.preventDefault();
+    const email = event.target.email.value;
+    
+    const user = {
+        name: email.split('@')[0],
+        email: email,
+        type: 'private',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&h=50&q=80'
+    };
+    
+    loginUser(user);
+    closeModal('loginModal');
+}
+
+
+        // Register
+        function register(event) {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    
+    const user = {
+        name: name,
+        email: email,
+        type: registrationType,
+        avatar: registrationType === 'business' 
+            ? 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&h=50&q=80'
+            : 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=50&h=50&q=80'
+    };
+    
+    loginUser(user);
+    closeModal('registerModal');
+}
+
+        // Contact Sales
+        function contactSales(salesPerson) {
+            alert(`Verbindung zu ${salesPerson} wird hergestellt...`);
+        }
+
+        // Support
+        function sendSupportMessage(event) {
+            event.preventDefault();
+            const name = event.target.name.value;
+            const subject = event.target.subject.value;
+            
+            alert(`Support-Anfrage von ${name} wurde gesendet!\nBetreff: ${subject}`);
+            closeModal('supportModal');
+            event.target.reset();
+        }
+
+        // Show welcome message
+        function showWelcomeMessage(message) {
+            const banner = document.createElement('div');
+            banner.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #4caf50, #45a049);
+                color: white;
+                padding: 1rem;
+                text-align: center;
+                z-index: 1001;
+                animation: slideDown 0.3s ease-out;
+            `;
+            banner.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            
+            document.body.appendChild(banner);
+            
+            setTimeout(() => {
+                if (banner.parentNode) {
+                    banner.parentNode.removeChild(banner);
+                }
+            }, 3000);
+            
+            updateHeaderForLoggedInUser();
+        }
+
+        // Update header for logged in user
+        function updateHeaderForLoggedInUser() {
+    const authSection = document.getElementById('authSection');
+    authSection.innerHTML = `
+        <div class="user-profile">
+            <img src="${currentUser.avatar}" alt="${currentUser.name}" class="profile-avatar" onclick="toggleProfileDropdown()">
+            <div class="profile-info">
+                <div class="profile-name">${currentUser.name}</div>
+                <div class="profile-type">${currentUser.type === 'business' ? 'Unternehmen' : 'Privatkunde'}</div>
+            </div>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#" onclick="showProfile()"><i class="fas fa-user"></i> Profil bearbeiten</a>
+                <a href="#" onclick="showBookings()"><i class="fas fa-calendar"></i> Meine Buchungen</a>
+                <a href="#" onclick="showFavorites()"><i class="fas fa-heart"></i> Favoriten</a>
+                ${currentUser.type === 'business' ? '<a href="#" onclick="showCompanyDashboard()"><i class="fas fa-building"></i> Firmenkonto</a>' : ''}
+                <a href="#" onclick="showSettings()"><i class="fas fa-cog"></i> Einstellungen</a>
+                <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Abmelden</a>
+            </div>
+        </div>
+    `;
+}
+
+        // Logout function
+        function logout() {
+    if (confirm('Möchten Sie sich wirklich abmelden?')) {
+        currentUser = null;
+        const authSection = document.getElementById('authSection');
+        authSection.innerHTML = `
+            <a href="#" class="btn btn-secondary" onclick="openModal('loginModal')">
+                <i class="fas fa-sign-in-alt"></i> Anmelden
+            </a>
+            <a href="#" class="btn btn-primary" onclick="openModal('registerModal')">
+                <i class="fas fa-user-plus"></i> Registrieren
+            </a>
+        `;
+        updateHeroSection(); // Hero zurücksetzen
+        alert('Sie wurden erfolgreich abgemeldet!');
+    }
+    if (document.getElementById('profileDropdown')) {
+        document.getElementById('profileDropdown').classList.remove('show');
+    }
+}
+
+        // Add to cart functionality (für home page) - ERSETZEN Sie die bestehende Funktion
+function addToCart(button) {
+    event.stopPropagation();
+    
+    const productCard = button.closest('.product-card');
+    const productTitle = productCard.querySelector('.product-title').textContent;
+    const productPrice = productCard.querySelector('.product-price').textContent.replace('€', '');
+    
+    // Find product ID by title
+    let productId = null;
+    for (const [id, product] of Object.entries(products)) {
+        if (product.title === productTitle) {
+            productId = id;
+            break;
+        }
+    }
+    
+    if (productId) {
+        const cartItem = {
+            id: productId,
+            title: productTitle,
+            price: parseInt(productPrice),
+            quantity: 1,
+            date: '',
+            time: 'morning',
+            discount: 0,
+            product: products[productId]
+        };
+        
+        cart.push(cartItem);
+        
+        button.innerHTML = '<i class="fas fa-check"></i> Im Warenkorb';
+        button.style.backgroundColor = '#4caf50';
+        
+        setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-shopping-cart"></i> Buchen';
+            button.style.backgroundColor = '';
+        }, 2000);
+        
+        // Show cart notification
+        showCartNotification();
+    }
+}
+
+function showCartNotification() {
+    const banner = document.createElement('div');
+    banner.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        z-index: 1001;
+        animation: slideInRight 0.3s ease-out;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        cursor: pointer;
+    `;
+    banner.innerHTML = `
+        <i class="fas fa-check-circle"></i> Artikel hinzugefügt!
+        <br><small>Klicken Sie hier um zum Warenkorb zu gehen</small>
+    `;
+    
+    banner.onclick = () => showCartPage();
+    
+    document.body.appendChild(banner);
+    
+    setTimeout(() => {
+        if (banner.parentNode) {
+            banner.parentNode.removeChild(banner);
+        }
+    }, 3000);
+}
+
+// Advanced Search Dropdown Functions
+function showSearchDropdown() {
+    document.getElementById('search-dropdown').classList.add('show');
+}
+
+function hideSearchDropdown() {
+    setTimeout(() => {
+        document.getElementById('search-dropdown').classList.remove('show');
+    }, 200);
+}
+
+function handleSearchInput() {
+    const input = document.getElementById('main-search-input');
+    const dropdown = document.getElementById('search-dropdown');
+    
+    if (input.value.length > 0) {
+        // Filter suggestions based on input
+        filterSearchSuggestions(input.value);
+    }
+}
+
+function selectSearch(term) {
+    document.getElementById('main-search-input').value = term;
+    hideSearchDropdown();
+    performSearch(term);
+}
+
+function selectExperience(experience) {
+    hideSearchDropdown();
+    alert(`Suche nach "${experience}" wird gestartet...`);
+    // Hier würden Sie zur entsprechenden Kategorie weiterleiten
+}
+
+function selectCategory(category) {
+    hideSearchDropdown();
+    alert(`Kategorie "${category}" wird geladen...`);
+    // Hier würden Sie zur entsprechenden Kategorie weiterleiten
+}
+
+function viewAllExperiences() {
+    hideSearchDropdown();
+    // Scroll to experiences section
+    document.getElementById('erlebnisse').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+function performSearch(term) {
+    alert(`Suche wird durchgeführt nach: "${term}"`);
+    // Hier würden Sie die tatsächliche Suchfunktion implementieren
+}
+
+function filterSearchSuggestions(searchTerm) {
+    // This would filter the suggestions based on the search term
+    // For now, we'll keep it simple
+    console.log(`Filtering suggestions for: ${searchTerm}`);
+}
+
+// Click outside to close dropdown
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.search-input-container')) {
+        document.getElementById('search-dropdown').classList.remove('show');
+    }
+});
+
+// Close dropdown on scroll
+window.addEventListener('scroll', function() {
+    document.getElementById('search-dropdown').classList.remove('show');
+});
+
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.querySelector('.search-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const searchTerm = this.querySelector('.search-input').value;
+                    const category = this.querySelector('select').value;
+                    
+                    alert(`Suche nach: "${searchTerm}" in Kategorie: "${category || 'Alle'}"`);
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Category card click functionality
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryTitle = this.querySelector('h3').textContent;
+                    alert(`Kategorie "${categoryTitle}" wird geladen...`);
+                });
+            });
+
+            // Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.user-profile')) {
+        const dropdown = document.getElementById('profileDropdown');
+        if (dropdown) {
+            dropdown.classList.remove('show');
+        }
+    }
+});
+
+            console.log('Erlebnis-Helden Portal mit optimiertem Chatbot und 3 Produkten geladen!');
+
+
+// Payment Methods
+let selectedPayment = 'credit-card';
+
+function selectPayment(method) {
+    selectedPayment = method;
+    
+    // Remove selected class from all options
+    document.querySelectorAll('.payment-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked option
+    event.currentTarget.classList.add('selected');
+    
+    // Check the radio button
+    document.getElementById(method).checked = true;
+    
+    // Update checkout button text
+    updateCheckoutButton(method);
+}
+
+function updateCheckoutButton(method) {
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    const paymentNames = {
+        'credit-card': 'Mit Kreditkarte bezahlen',
+        'paypal': 'Mit PayPal bezahlen',
+        'apple-pay': 'Mit Apple Pay bezahlen',
+        'klarna': 'Mit Klarna bezahlen'
+    };
+    
+    checkoutBtn.innerHTML = `<i class="fas fa-lock"></i> ${paymentNames[method]}`;
+}
+
+function expressCheckout(method) {
+    if (cart.length === 0) {
+        alert('Ihr Warenkorb ist leer!');
+        return;
+    }
+    
+    const total = document.getElementById('cart-total').textContent;
+    
+    if (method === 'paypal') {
+        alert(`Express-Checkout mit PayPal\n\nGesamtsumme: ${total}\n\nWeiterleitung zu PayPal...`);
+        // Hier würde die PayPal-Integration starten
+    } else if (method === 'apple-pay') {
+        if ('ApplePaySession' in window) {
+            alert(`Apple Pay wird gestartet...\n\nGesamtsumme: ${total}`);
+            // Hier würde Apple Pay gestartet
+        } else {
+            alert('Apple Pay ist auf diesem Gerät nicht verfügbar.');
+        }
+    }
+}
+
+// Erweiterte proceedToCheckout Funktion
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        alert('Ihr Warenkorb ist leer!');
+        return;
+    }
+    
+    const total = document.getElementById('cart-total').textContent;
+    const paymentNames = {
+        'credit-card': 'Kreditkarte',
+        'paypal': 'PayPal',
+        'apple-pay': 'Apple Pay',
+        'klarna': 'Klarna'
+    };
+    
+    alert(`Checkout mit ${paymentNames[selectedPayment]}\n\nGesamtsumme: ${total}\n\nWeiterleitung zur sicheren Bezahlung...`);
+    
+    // Hier würde die jeweilige Payment-Integration starten
+    switch(selectedPayment) {
+        case 'paypal':
+            // PayPal SDK Integration
+            break;
+        case 'apple-pay':
+            // Apple Pay Integration
+            break;
+        case 'klarna':
+            // Klarna Integration
+            break;
+        default:
+            // Kreditkarten-Gateway
+            break;
+    }
+}
+
+
+
+
+
+        });
+    </script>
+
+<!-- Welcome Popup -->
+<div id="welcomePopup" class="welcome-popup">
+    <div class="welcome-popup-content">
+        <h3>🎈 Welcome back, Linda!</h3>
+        <p>Schön, dass du wieder da bist! Als Willkommensgeschenk haben wir einen besonderen Rabatt für dich:</p>
+        
+        <div class="voucher-highlight">
+            <p><strong>15% Rabatt auf alle Ballonfahrten!</strong></p>
+            <div class="voucher-code">abheben15</div>
+            <p style="font-size: 0.9rem;">Gültig für deine nächste Buchung</p>
+        </div>
+        
+        <button class="popup-close" onclick="closeWelcomePopup()">
+            Perfekt, danke! 🚀
+        </button>
+    </div>
+</div>
+
+
+</body>
+</html>
