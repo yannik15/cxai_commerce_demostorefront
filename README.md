@@ -27,35 +27,28 @@ Registrierung sowohl für B2C als auch für B2B möglich. Beide Kanäle können 
 #### Key Benefits
 > "Endkunden und Geschäftskunden können sich in Sekunden sicher registrieren und anmelden - keine Formulare ausfüllen, einfach mit bestehenden Social Accounts anmelden."
 
+
+
+
+  
 ---
+
+
+
+
 
 ## 👤 Demo Step 2: AI-Personalisierung für Linda
 
 ### Personalisierte Benutzererfahrung
 
-**"Schauen wir uns nun an, was passiert, wenn sich Linda anmeldet - eine bestehende Kundin mit Vorlieben für Outdoor-Erlebnisse."**
+**"Schauen wir uns nun an, was passiert, wenn sich Linda anmeldet - eine bestehende Kundin mit Vorlieben für Surf-Erlebnisse."**
 
-#### Personalisiertes Dashboard
-```
-Willkommen zurück, Linda! 🌟
-```
+#### Personalisiertes Banner und Kontobereich
+<img width="1728" height="991" alt="image" src="https://github.com/user-attachments/assets/173e96d8-4237-4ca3-a47a-4e0d43b7b590" />
 
-#### Angepasstes Banner
-- **Dynamisches Hero-Banner**: "Neue Wandertouren in den Alpen - Perfekt für dich!"
-- **Personalisierte Farbgebung**: Erdtöne und Naturfarben basierend auf Lindas Präferenzen
-- **Individuelle Botschaften**: "Basierend auf deinen letzten Buchungen..."
+#### Personalisierter Promotion Code
 
-#### AI-gestützte Produktvorschläge
-- 🏔️ **Bergwandern Premium** - 89% Match
-- 🚴 **E-Bike Tour Schwarzwald** - 76% Match  
-- 🏕️ **Glamping Weekend** - 71% Match
-- 🌊 **Kajak Abenteuer** - 68% Match
-
-#### Personalisierungslogik
-- **Kaufhistorie**: Outdoor-Erlebnisse, Wochenendtrips
-- **Browsing-Verhalten**: Häufige Suchen nach "Natur", "Abenteuer"
-- **Saisonale Präferenzen**: Frühjahr/Sommer Aktivitäten
-- **Preissegment**: Premium-Erlebnisse 200-500€
+<img width="1728" height="992" alt="image" src="https://github.com/user-attachments/assets/80954837-7328-4687-b1c2-a5986ca9391f" />
 
 ---
 
