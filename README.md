@@ -1,7 +1,10 @@
 # Commerce AI Features Demo Script
 
+## Story
+Linda ist als Beispielkunde auf unserer Erlebnishelden Seite unterwegs. Sie möchte für sich und ihre Freundin eine Ballonfahrt buchen. Dabei benutzt Sie verschiedene Ai Features und Neuerungen der SAP Commerce Cloud auf der die Erlebnishelden Seite aufgebaut ist.
+
 ## Übersicht
-Diese Demo zeigt die neuesten AI-gestützten Commerce-Features unserer Plattform. Wir durchlaufen neun Hauptbereiche: intelligente Authentifizierung, personalisierte Benutzererfahrung, AI-gestützte Suche, AI-generierte Produktinhalte, intelligente Bewertungsanalyse, Shopping Assistant, flexible Zahlungsmethoden, digitale Ticketing-Lösungen und integrierte Support-Services.
+Diese Demo zeigt die neuesten AI-gestützten SAP Commerce Cloud-Features. Wir durchlaufen neun Schritte: intelligente Authentifizierung, personalisierte Benutzererfahrung, AI-gestützte Suche, AI-generierte Produktinhalte, intelligente Bewertungsanalyse, Shopping Assistant, flexible Zahlungsmethoden, digitale Ticketing-Lösungen und integrierte Support-Services.
 
 ---
 
@@ -9,25 +12,20 @@ Diese Demo zeigt die neuesten AI-gestützten Commerce-Features unserer Plattform
 
 ### Login & Registrierung Features
 
-**"Beginnen wir mit unserem flexiblen Authentifizierungssystem, das sowohl B2C- als auch B2B-Kunden unterstützt."**
+"Linda kommt auf die Webseite und hat hier verschieden Möglichkeiten sich anzumelden oder zu registrieren"
 
-#### B2C Registrierung
-- ✅ Schnelle E-Mail/Passwort Registrierung
-- ✅ Social Login Integration
-  - Google Login
-  - Facebook Login  
-  - Apple ID
-  - LinkedIn
-- ✅ Ein-Klick Registrierung über soziale Netzwerke
+Schneller Login über SSO oder Social Login (CDC als Lösung integriert):
 
-#### B2B Registrierung
-- ✅ Unternehmens-Account Erstellung
-- ✅ Multi-User Management
-- ✅ Firmen-spezifische Konditionen
-- ✅ Genehmigungsworkflows
+<img width="1728" height="991" alt="image" src="https://github.com/user-attachments/assets/1365a05e-a6e3-4182-a708-79b78bd35a87" />
+
+---
+
+Registrierung sowohl für B2C als auch für B2B möglich. Beide Kanäle können über eine Commerce Plattform bedient werden:
+
+<img width="1728" height="939" alt="image" src="https://github.com/user-attachments/assets/e6577440-39b3-40a2-a7e8-14b693d5bf7e" />
 
 #### Key Benefits
-> "Kunden können sich in Sekunden registrieren - keine Formulare ausfüllen, einfach mit bestehenden Social Accounts anmelden."
+> "Endkunden und Geschäftskunden können sich in Sekunden sicher registrieren und anmelden - keine Formulare ausfüllen, einfach mit bestehenden Social Accounts anmelden."
 
 ---
 
